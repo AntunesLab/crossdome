@@ -1,0 +1,1 @@
+usethis::use_data(MDS_COMPONENTS, BLOSUM80, internal = TRUE, overwrite = TRUE)
