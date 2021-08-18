@@ -1,1 +1,40 @@
 usethis::use_data(MDS_COMPONENTS, BLOSUM80, internal = TRUE, overwrite = TRUE)
+
+# cross_scores
+ - metrics and pairwise functions
+	-- cross_bp_summary()
+		-- internal_matrix_metrics()
+			-- internal_peptide_to_matrix()
+			-- internal_tcr_weights()
+		-- interal_align_metrics()
+	-- cross_tcr_alignment()
+		-- internal_tcr_weights() 
+		# Recevies a TCR sequences and matches it with pre-computed PSSMs
+
+# cross_helpers
+ - internal functions to parser peptides
+	-- internal_checking_peptide()
+	-- internal_peptide_to_matrix()
+	-- internal_matrix_metrics()
+		-- frobinius and others
+	-- internal_align_metrics()
+		-- score (?), positive and mismatch
+			-- BLOSUM80
+	-- internal_tcr_weights()
+		-- parameters: CDR3 sequence and HLA allele (?)
+		-- return: 
+
+# cross_utils
+ - all plot functions and dynamic datatable
+	-- cross_plot_matrices()
+		-- ComplexHeatmap
+			-- Optional TCR batplot
+	-- cross_report_table()
+		-- parameters: open_widget
+		-- return: expression_breadth, binding-affinity score
+
+# cross_compose
+ - main function with recursive
+	-- cross_compose()
+		-- parameters: peptide, hla_allele, universe, tcr_pssm
+		-- returns: cross_report_table()

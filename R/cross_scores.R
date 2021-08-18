@@ -1,25 +1,3 @@
-#' Title
-#' @description Returns MDS components for each amine acid
-#' @noRd
-.internal_checking_peptide <- function(peptide) {
-  peptide <- base::strsplit(peptide, split = "")[[1]]
-  if(!all(peptide %in% Biostrings::AA_STANDARD)) {
-    quit("Please, check your input sequence.")
-  }
-  return(peptide)
-}
-
-#' Title
-#' @description Returns MDS components for each amine acid
-#' @importFrom Biostrings AA_STANDARD
-#' @noRd
-
-.internal_peptide_to_matrix <- function(peptide) {
-  peptide <- .internal_checking_peptide(peptide)
-  peptide_to_matrix <- MDS_COMPONENTS[, peptide]
-  return(peptide_to_matrix)
-}
-
 #' Biochemistry Correlation
 #'
 #' @param query Query sequence
@@ -89,4 +67,18 @@ peptide_alignment_stats <- function(query, subject) {
   )
 
   return(cross_alg_stats)
+}
+
+#' Biochemistry Score
+#'
+#' @param query
+#' @param subject
+#'
+#' @return
+#' @export
+#'
+#' @examples
+biochemistry_score <- function(query, subject) {
+  query <- .internal_peptide_to_matrix(query)
+  subject <- .internal_peptide_to_matrix(subject)
 }

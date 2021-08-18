@@ -2,7 +2,7 @@
 % Please edit documentation in R/cross_scores.R
 \name{peptide_alignment_stats}
 \alias{peptide_alignment_stats}
-\title{Title}
+\title{Peptide Alignment Stats}
 \usage{
 peptide_alignment_stats(query, subject)
 }
@@ -13,7 +13,7 @@ peptide_alignment_stats(query, subject)
 
 }
 \description{
-Title
+Peptide Alignment Stats
 }
 \examples{
 query <- 'EVDPIGHLY'
