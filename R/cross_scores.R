@@ -1,8 +1,8 @@
-#' Biochemistry Correlation
+#' Crossdome Summary
 #'
-#' @param query Query sequence
-#' @param subject Subject sequence
-#' @param method Spearman correlation as default
+#' @param query Description
+#' @param subject Description
+#' @param method Description
 #'
 #' @return
 #' @export
@@ -10,75 +10,37 @@
 #' @examples
 #' query <- 'EVDPIGHLY'
 #' subject <- 'EVDPIGMLY'
-#' biochemistry_correlation(query = query, subject = subject)
+#' cross_bp_summary(query = query, subject = subject)
 
-biochemistry_correlation <- function(query, subject, method = "spearman") {
-  query <- .internal_peptide_to_matrix(query)
-  subject <- .internal_peptide_to_matrix(subject)
+cross_bp_summary <- function(query, subject, method = "spearman") {
+
+  query_vector <- .internal_checking_peptide(query)
+  subject_vector <- .internal_checking_peptide(subject)
 
   if(length(query) != length(subject)) {
-    quit("Please, check your input sequence.")
+    quit("Please, the input sequence should have same length.")
   }
 
-  pairwise_matrix <- stats::cor(query, subject, method = method)
+  n_mismatch <- length(query_vector) - sum(query_vector == subject_vector)
+  n_positive <- sum(base::diag(BLOSUM80[query_vector, subject_vector]) > 0)
+
+  query_components <- .internal_peptide_to_matrix(query_vector)
+  subject_components <- .internal_peptide_to_matrix(subject_vector)
+
+  pairwise_matrix <- stats::cor(
+    query_components, subject_components, method = method)
+  pvalue <- cor.test(query_components, subject_components)$p.value
   diagonal_score <- sum(base::diag(pairwise_matrix)) / length(query)
+  matrices_score <- .internal_matrix_metrics(query_components, subject_components)
 
-  cross_object <- structure(
+  return(
     list(
-      pairwise_matrix = pairwise_matrix,
-      diagonal_score = diagonal_score
-    ),
-    class = 'cross_object'
-  )
-
-  return(cross_object)
-}
-
-#' Peptide Alignment Stats
-#'
-#' @param query
-#' @param subject
-#'
-#' @return
-#' @importFrom Biostrings pairwiseAlignment
-#' @export
-#'
-#' @examples
-#' query <- 'EVDPIGHLY'
-#' subject <- 'EVDPIGMLY'
-#' peptide_alignment_stats(query = query, subject = subject)
-
-peptide_alignment_stats <- function(query, subject) {
-  query <- .internal_checking_peptide(query)
-  subject <- .internal_checking_peptide(subject)
-
-  if(length(query) != length(subject)) {
-    quit("Please, check your input sequence.")
-  }
-
-  n_mismatch <- length(query) - sum(query == subject)
-  n_positive <- sum(base::diag(BLOSUM80[query, subject]) > 0)
-
-  cross_alg_stats <- structure(
-    list(
+      n_positive = n_positive,
       n_mismatch = n_mismatch,
-      n_positive = n_positive),
-    class = "cross_alg_stats"
+      diagonal_score = diagonal_score,
+      pvalue = pvalue,
+      frobenius = matrices_score$frobenius,
+      braun_score = matrices_score$braun_score
+    )
   )
-
-  return(cross_alg_stats)
-}
-
-#' Biochemistry Score
-#'
-#' @param query
-#' @param subject
-#'
-#' @return
-#' @export
-#'
-#' @examples
-biochemistry_score <- function(query, subject) {
-  query <- .internal_peptide_to_matrix(query)
-  subject <- .internal_peptide_to_matrix(subject)
 }

@@ -5,3 +5,4 @@ cross_pairwise_plot <- function(pairwise_matrix) {
 cross_report_table <- function(result) {
 
 }
+

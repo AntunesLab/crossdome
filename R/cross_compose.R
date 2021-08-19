@@ -18,7 +18,8 @@ cross_compose <- function(query,
                           widget = TRUE) {
 
 
-  results <- sapply(universe, cross_bp_summary, )
+  results <- sapply(universe, cross_bp_summary)
+  results <- do.call(rbind.data.frame, results)
 
   if(widgets) {
     cross_report_table(results)
