@@ -2,25 +2,27 @@
 % Please edit documentation in R/cross_compose.R
 \name{cross_compose}
 \alias{cross_compose}
-\title{Title}
+\title{Crossdome Compose}
 \usage{
-cross_compose(query, universe = HLA_LIST, tcr_weights, widget = TRUE)
+cross_compose(query, subject, widgets = FALSE)
 }
 \arguments{
 \item{query}{Description}
 
-\item{tcr_weights}{Description}
-
 \item{subject}{Description}
 
-\item{hla_allele}{Description}
+\item{widgets}{Description}
 }
 \value{
 
 }
 \description{
-Title
+Crossdome Compose
 }
 \examples{
+data('mage_off_targets')
 
+query <- 'EVDPIGHLY'
+subject <- mage_off_targets$peptide_sequence
+rank <- cross_compose(query = query, subject = subject, widgets = FALSE)
 }

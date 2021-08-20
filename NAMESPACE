@@ -2,4 +2,12 @@
 
 export(cross_bp_summary)
 export(cross_compose)
+export(cross_epitope_properties)
+export(cross_pairwise_plot)
+export(cross_report_table)
+import(Biostrings)
+import(ComplexHeatmap)
+import(DT)
 importFrom(Biostrings,AA_STANDARD)
+importFrom(ComplexHeatmap,pheatmap)
+importFrom(DT,datatable)

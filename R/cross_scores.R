@@ -12,20 +12,20 @@
 #' subject <- 'EVDPIGMLY'
 #' cross_bp_summary(query = query, subject = subject)
 
-cross_bp_summary <- function(query, subject, method = "spearman") {
+cross_bp_summary <- function(query, subject, method = c("pearson", "kendall", "spearman")) {
 
-  query_vector <- .internal_checking_peptide(query)
-  subject_vector <- .internal_checking_peptide(subject)
+  query_vector <- .internal_checking_epitope(query)
+  subject_vector <- .internal_checking_epitope(subject)
 
-  if(length(query) != length(subject)) {
+  if(length(query_vector) != length(subject_vector)) {
     quit("Please, the input sequence should have same length.")
   }
 
   n_mismatch <- length(query_vector) - sum(query_vector == subject_vector)
   n_positive <- sum(base::diag(BLOSUM80[query_vector, subject_vector]) > 0)
 
-  query_components <- .internal_peptide_to_matrix(query_vector)
-  subject_components <- .internal_peptide_to_matrix(subject_vector)
+  query_components <- .internal_epitope_to_matrix(query_vector)
+  subject_components <- .internal_epitope_to_matrix(subject_vector)
 
   pairwise_matrix <- stats::cor(
     query_components, subject_components, method = method)
@@ -35,6 +35,8 @@ cross_bp_summary <- function(query, subject, method = "spearman") {
 
   return(
     list(
+      query = query,
+      subject = subject,
       n_positive = n_positive,
       n_mismatch = n_mismatch,
       diagonal_score = diagonal_score,

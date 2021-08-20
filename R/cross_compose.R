@@ -1,29 +1,39 @@
 
-#' Title
+#' Crossdome Compose
 #'
 #' @param query Description
 #' @param subject Description
-#' @param hla_allele Description
-#' @param tcr_weights Description
+#' @param widgets Description
 #'
 #' @return
 #' @export
 #'
-#' @examples
+#' @import DT
+#' @importFrom DT datatable
 #'
+#' @examples
+#' data('mage_off_targets')
+#'
+#' query <- 'EVDPIGHLY'
+#' subject <- mage_off_targets$peptide_sequence
+#' rank <- cross_compose(query = query, subject = subject, widgets = FALSE)
 
-cross_compose <- function(query,
-                          universe = HLA_LIST,
-                          tcr_weights,
-                          widget = TRUE) {
+cross_compose <- function(query, subject, widgets = FALSE) {
 
+  if(length(subject) > 1) {
+    result <- lapply(subject, function(off_target) {
+      cross_bp_summary(query, off_target)
+    })
+  } else {
+    cross_bp_summary(query, subject)
+  }
 
-  results <- sapply(universe, cross_bp_summary)
-  results <- do.call(rbind.data.frame, results)
+  result <- do.call(rbind.data.frame, result)
+  result <- result[order(result$diagonal_score, decreasing = T), ]
 
   if(widgets) {
-    cross_report_table(results)
+    cross_report_table(result)
   }
-  return(results)
 
+  return(result)
 }

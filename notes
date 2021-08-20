@@ -1,4 +1,5 @@
 usethis::use_data(MDS_COMPONENTS, BLOSUM80, internal = TRUE, overwrite = TRUE)
+ellipsis - https://techvidvan.com/tutorials/r-arguments/
 
 # cross_scores
  - metrics and pairwise functions
@@ -6,7 +7,7 @@ usethis::use_data(MDS_COMPONENTS, BLOSUM80, internal = TRUE, overwrite = TRUE)
 		-- internal_matrix_metrics()
 			-- internal_peptide_to_matrix()
 			-- internal_tcr_weights()
-		-- interal_align_metrics()
+		-- internal_align_metrics()
 	-- cross_tcr_alignment()
 		-- internal_tcr_weights() 
 		# Recevies a TCR sequences and matches it with pre-computed PSSMs
