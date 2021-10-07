@@ -16,4 +16,21 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(crossdome)
+
+data('mage_off_targets')
+query <- 'EVDPIGHLY'
+
+#
+
+subject <- mage_off_targets$peptide_sequence
+subject <- cross_universe(allele = "XXXXXXXXX")
+#
+
+rank <- cross_compose(query = query, subject = subject, widgets = FALSE)
+
+#
+
+second <- rank[1, 'subject']
+cross_pairwise_plot(query = query, subject = second)
+
 ```

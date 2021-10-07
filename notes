@@ -1,5 +1,6 @@
 usethis::use_data(MDS_COMPONENTS, BLOSUM80, internal = TRUE, overwrite = TRUE)
 ellipsis - https://techvidvan.com/tutorials/r-arguments/
+Shiny app And R package - https://deanattali.com/2015/04/21/r-package-shiny-app/
 
 # cross_scores
  - metrics and pairwise functions

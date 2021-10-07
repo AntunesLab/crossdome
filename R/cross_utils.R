@@ -20,7 +20,7 @@ cross_pairwise_plot <- function(query, subject) {
   subject_components <- .internal_epitope_to_matrix(subject)
 
   matrices_correlation <- .internal_matrix_correlation(
-    query_components, query_components)
+    query_components, subject_components)
   pairwise_matrix <- matrices_correlation$pairwise_matrix
 
     heatmap <- ComplexHeatmap::pheatmap(
