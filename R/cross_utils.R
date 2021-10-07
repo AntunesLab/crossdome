@@ -59,3 +59,25 @@ cross_report_table <- function(result) {
 cross_epitope_properties <- function(epitope) {
   return(.internal_epitope_to_matrix(epitope))
 }
+
+#' cross_epitope_properties
+#'
+#' @param epitope Description
+#'
+#' @return
+#'
+#' @import shiny
+#' @importFrom shiny runApp
+#' @export
+#'
+#' @examples
+#' cross_epitope_properties('EVDPIGHLY')
+
+cross_browser <- function() {
+  app_directory <- system.file("cross_browser", package = "crossdome")
+  if (app_directory == "") {
+    stop("Could not find example directory. Try re-installing `crossdome`.", call. = FALSE)
+  }
+
+  shiny::runApp(app_directory, display.mode = "normal")
+}
