@@ -3,9 +3,11 @@
 #'
 #' @param query Description
 #' @param subject Description
+#' @param allele Description
+#' @param position_weight Description
 #' @param widgets Description
 #'
-#' @return
+#' @return Description
 #' @export
 #'
 #' @import DT
@@ -18,14 +20,14 @@
 #' subject <- mage_off_targets$peptide_sequence
 #' rank <- cross_compose(query = query, subject = subject, widgets = FALSE)
 
-cross_compose <- function(query, subject, widgets = FALSE) {
+cross_compose <- function(query, subject, allele, position_weight, widgets = FALSE) {
 
   if(length(subject) > 1) {
     result <- lapply(subject, function(off_target) {
-      cross_bp_summary(query, off_target)
+      cross_bp_summary(query, off_target, position_weight)
     })
   } else {
-    cross_bp_summary(query, subject)
+    result <- cross_bp_summary(query, subject, position_weight)
   }
 
   result <- do.call(rbind.data.frame, result)

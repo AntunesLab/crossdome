@@ -12,7 +12,7 @@ cross_pairwise_plot(query, subject)
 \item{subject}{Description}
 }
 \value{
-
+Description
 }
 \description{
 cross_pairwise_plot

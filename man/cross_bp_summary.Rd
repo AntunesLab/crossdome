@@ -4,17 +4,24 @@
 \alias{cross_bp_summary}
 \title{Crossdome Summary}
 \usage{
-cross_bp_summary(query, subject, method = c("pearson", "kendall", "spearman"))
+cross_bp_summary(
+  query,
+  subject,
+  position_weight,
+  method = c("pearson", "kendall", "spearman")
+)
 }
 \arguments{
 \item{query}{Description}
 
 \item{subject}{Description}
 
+\item{position_weight}{Description}
+
 \item{method}{Description}
 }
 \value{
-
+Description
 }
 \description{
 Crossdome Summary

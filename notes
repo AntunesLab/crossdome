@@ -13,7 +13,7 @@ Shiny app And R package - https://deanattali.com/2015/04/21/r-package-shiny-app/
 		-- internal_tcr_weights() 
 		# Recevies a TCR sequences and matches it with pre-computed PSSMs
 
-# cross_helpers
+# cross_internals
  - internal functions to parser peptides
 	-- internal_checking_peptide()
 	-- internal_peptide_to_matrix()

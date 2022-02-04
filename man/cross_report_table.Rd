@@ -10,11 +10,8 @@ cross_report_table(result)
 \item{result}{Description}
 }
 \value{
-
+Description
 }
 \description{
 cross_report_table
-}
-\examples{
-
 }

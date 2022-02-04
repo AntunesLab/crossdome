@@ -4,17 +4,21 @@
 \alias{cross_compose}
 \title{Crossdome Compose}
 \usage{
-cross_compose(query, subject, widgets = FALSE)
+cross_compose(query, subject, allele, position_weight, widgets = FALSE)
 }
 \arguments{
 \item{query}{Description}
 
 \item{subject}{Description}
 
+\item{allele}{Description}
+
+\item{position_weight}{Description}
+
 \item{widgets}{Description}
 }
 \value{
-
+Description
 }
 \description{
 Crossdome Compose

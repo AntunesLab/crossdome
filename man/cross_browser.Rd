@@ -2,19 +2,13 @@
 % Please edit documentation in R/cross_utils.R
 \name{cross_browser}
 \alias{cross_browser}
-\title{cross_epitope_properties}
+\title{cross_browser}
 \usage{
 cross_browser()
 }
-\arguments{
-\item{epitope}{Description}
-}
 \value{
-
+Description
 }
 \description{
-cross_epitope_properties
-}
-\examples{
-cross_epitope_properties('EVDPIGHLY')
+cross_browser
 }

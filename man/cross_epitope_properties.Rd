@@ -10,7 +10,7 @@ cross_epitope_properties(epitope)
 \item{epitope}{Description}
 }
 \value{
-
+Description
 }
 \description{
 cross_epitope_properties

@@ -18,6 +18,7 @@
 #'
 #' @import Biostrings
 #' @importFrom Biostrings AA_STANDARD
+#' @importFrom stats cor
 #' @noRd
 
 .internal_epitope_to_matrix <- function(epitope) {
@@ -41,7 +42,7 @@
   pairwise_matrix <- stats::cor(
     query_components, subject_components, method = method)
   pvalue <- cor.test(query_components, subject_components)$p.value
-  diagonal_score <- sum(base::diag(pairwise_matrix)) / length(query)
+  diagonal_score <- sum(base::diag(pairwise_matrix)) / length(query_components)
 
   return(
     list(

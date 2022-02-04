@@ -1,5 +1,5 @@
 ---
-title: "Predicting cross-reactivity targets"
+title: "Example 01"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Predicting cross-reactivity targets}
@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
+
 library(crossdome)
 
 data('mage_off_targets')
@@ -23,14 +24,13 @@ query <- 'EVDPIGHLY'
 #
 
 subject <- mage_off_targets$peptide_sequence
-subject <- cross_universe(allele = "XXXXXXXXX")
+subject <- cross_universe(subject, allele = "HLA-A*01:01")
+
+result <- cross_compose(query = query, subject = subject$subject, widgets = FALSE)
+
 #
 
-rank <- cross_compose(query = query, subject = subject, widgets = FALSE)
-
-#
-
-second <- rank[1, 'subject']
+second <- result[1, 'subject']
 cross_pairwise_plot(query = query, subject = second)
 
 ```

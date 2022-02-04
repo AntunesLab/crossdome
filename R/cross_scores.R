@@ -2,9 +2,12 @@
 #'
 #' @param query Description
 #' @param subject Description
+#' @param position_weight Description
 #' @param method Description
 #'
-#' @return
+#' @importFrom stats cor.test
+#'
+#' @return Description
 #' @export
 #'
 #' @examples
@@ -12,7 +15,7 @@
 #' subject <- 'EVDPIGMLY'
 #' cross_bp_summary(query = query, subject = subject)
 
-cross_bp_summary <- function(query, subject, method = c("pearson", "kendall", "spearman")) {
+cross_bp_summary <- function(query, subject, position_weight, method = c("pearson", "kendall", "spearman")) {
 
   query_vector <- .internal_checking_epitope(query)
   subject_vector <- .internal_checking_epitope(subject)
@@ -30,8 +33,16 @@ cross_bp_summary <- function(query, subject, method = c("pearson", "kendall", "s
   pairwise_matrix <- stats::cor(
     query_components, subject_components, method = method)
 
-  pvalue <- cor.test(query_components, subject_components)$p.value
-  diagonal_score <- sum(base::diag(pairwise_matrix)) / length(query)
+  pvalue <- stats::cor.test(query_components, subject_components)$p.value
+
+
+  if(length(position_weight) == length(query_vector)) {
+    diag_peptides <- base::diag(pairwise_matrix) * position_weight
+  } else {
+    diag_peptides <- base::diag(pairwise_matrix)
+  }
+
+  diagonal_score <- (sum(diag_peptides)**2) / length(query_vector)
   matrices_score <- .internal_matrix_metrics(query_components, subject_components)
 
   return(

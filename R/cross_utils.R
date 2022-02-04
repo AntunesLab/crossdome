@@ -3,7 +3,7 @@
 #' @param query Description
 #' @param subject Description
 #'
-#' @return
+#' @return Description
 #'
 #' @import ComplexHeatmap
 #' @importFrom ComplexHeatmap pheatmap
@@ -36,11 +36,8 @@ cross_pairwise_plot <- function(query, subject) {
 #'
 #' @param result Description
 #'
-#' @return
+#' @return Description
 #' @export
-#'
-#' @examples
-#'
 
 cross_report_table <- function(result) {
   return(datatable(result))
@@ -50,7 +47,7 @@ cross_report_table <- function(result) {
 #'
 #' @param epitope Description
 #'
-#' @return
+#' @return Description
 #' @export
 #'
 #' @examples
@@ -60,18 +57,52 @@ cross_epitope_properties <- function(epitope) {
   return(.internal_epitope_to_matrix(epitope))
 }
 
-#' cross_epitope_properties
+#' cross_universe
 #'
-#' @param epitope Description
+#' @param subject Description
+#' @param allele Description
 #'
-#' @return
+#' @return Description
 #'
 #' @import shiny
 #' @importFrom shiny runApp
 #' @export
 #'
 #' @examples
-#' cross_epitope_properties('EVDPIGHLY')
+#' subject <- mage_off_targets$peptide_sequence
+#' cross_universe(subject, allele = 'HLA*A-01:01')
+
+cross_universe <- function(subject, allele) {
+
+  hla_database <- crossdome::hla_database
+  allele_list <- unique(hla_database$hla_allele)
+
+  if(allele %in% allele_list) {
+    background <- hla_database[
+      hla_database$hla_allele == allele, 'peptide_sequence']
+  }
+
+  if(missing(subject)) {
+    subject <- background
+  } else {
+    subject <- union(subject, background)
+  }
+
+  return(
+    list(
+      allele = allele,
+      subject = subject
+    )
+  )
+}
+
+#' cross_browser
+#'
+#' @return Description
+#'
+#' @import shiny
+#' @importFrom shiny runApp
+#' @export
 
 cross_browser <- function() {
   app_directory <- system.file("cross_browser", package = "crossdome")
