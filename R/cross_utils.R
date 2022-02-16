@@ -32,17 +32,6 @@ cross_pairwise_plot <- function(query, subject) {
   return(heatmap)
 }
 
-#' cross_report_table
-#'
-#' @param result Description
-#'
-#' @return Description
-#' @export
-
-cross_report_table <- function(result) {
-  return(datatable(result))
-}
-
 #' cross_epitope_properties
 #'
 #' @param epitope Description
@@ -96,11 +85,27 @@ cross_universe <- function(subject, allele) {
   )
 }
 
+#' cross_expression
+#'
+#' @param epitope Description
+#' @param
+#'
+#' @return Description
+#'
+#' @export
+
+cross_expression <- function(epitope) {
+  peptide_annotation <- crossdome::peptide_annotation
+}
+
+
 #' cross_browser
 #'
 #' @return Description
 #'
 #' @import shiny
+#' @importFrom DT dataTableOutput
+#' @importFrom DT renderDataTable
 #' @importFrom shiny runApp
 #' @export
 
@@ -109,6 +114,5 @@ cross_browser <- function() {
   if (app_directory == "") {
     stop("Could not find example directory. Try re-installing `crossdome`.", call. = FALSE)
   }
-
   shiny::runApp(app_directory, display.mode = "normal")
 }

@@ -56,15 +56,18 @@
 #' @description Returns Frobenius and Braun et al score
 #' @noRd
 
-.internal_matrix_metrics <- function(query_components, subject_components) {
+.internal_matrix_metrics <- function(query_components, subject_components, position_weight = NULL) {
+
   product_components <- (query_components - subject_components)**2
-
   frobenius <- sum(product_components)
-  braun_score <- sum(
-    sqrt(apply(product_components, 2, sum))
-  )
+  braun_score <- sqrt(apply(product_components, 2, sum))
 
-  braun_score <- braun_score / ncol(query_components)
+  if(!is.null(position_weight)) {
+    position_weight_sqrt <- sqrt(position_weight)
+    braun_score <- braun_score * position_weight_sqrt
+  }
+
+  braun_score <- sum(braun_score) / ncol(query_components)
 
   return(list(frobenius = frobenius, braun_score = braun_score))
 }

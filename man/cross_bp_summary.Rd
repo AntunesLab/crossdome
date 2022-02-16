@@ -7,7 +7,7 @@
 cross_bp_summary(
   query,
   subject,
-  position_weight,
+  position_weight = NULL,
   method = c("pearson", "kendall", "spearman")
 )
 }

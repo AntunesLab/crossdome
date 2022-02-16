@@ -10,17 +10,14 @@
 #' @return Description
 #' @export
 #'
-#' @import DT
-#' @importFrom DT datatable
-#'
 #' @examples
 #' data('mage_off_targets')
 #'
 #' query <- 'EVDPIGHLY'
 #' subject <- mage_off_targets$peptide_sequence
-#' rank <- cross_compose(query = query, subject = subject, widgets = FALSE)
+#' rank <- cross_compose(query = query, subject = subject)
 
-cross_compose <- function(query, subject, allele, position_weight, widgets = FALSE) {
+cross_compose <- function(query, subject, allele, position_weight = NULL) {
 
   if(length(subject) > 1) {
     result <- lapply(subject, function(off_target) {
@@ -32,10 +29,6 @@ cross_compose <- function(query, subject, allele, position_weight, widgets = FAL
 
   result <- do.call(rbind.data.frame, result)
   result <- result[order(result$diagonal_score, decreasing = T), ]
-
-  if(widgets) {
-    cross_report_table(result)
-  }
 
   return(result)
 }

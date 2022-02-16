@@ -4,7 +4,7 @@
 \alias{cross_compose}
 \title{Crossdome Compose}
 \usage{
-cross_compose(query, subject, allele, position_weight, widgets = FALSE)
+cross_compose(query, subject, allele, position_weight = NULL)
 }
 \arguments{
 \item{query}{Description}
@@ -28,5 +28,5 @@ data('mage_off_targets')
 
 query <- 'EVDPIGHLY'
 subject <- mage_off_targets$peptide_sequence
-rank <- cross_compose(query = query, subject = subject, widgets = FALSE)
+rank <- cross_compose(query = query, subject = subject)
 }

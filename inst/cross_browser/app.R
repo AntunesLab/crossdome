@@ -107,6 +107,8 @@ server <- function(input, output) {
         selected <- input$table_rows_selected
         if(selected) {
             cat(selected, sep = ",")
+        } else {
+            cat(1:50)
         }
     })
 
@@ -120,5 +122,4 @@ server <- function(input, output) {
     )
 }
 
-# Run the application
 shinyApp(ui = ui, server = server)
