@@ -9,7 +9,7 @@ Shiny app And R package - https://deanattali.com/2015/04/21/r-package-shiny-app/
 			-- internal_peptide_to_matrix()
 			-- internal_tcr_weights()
 		-- internal_align_metrics()
-	-- cross_tcr_alignment()
+	-- cross_tcr_alignment() # Skipping it...
 		-- internal_tcr_weights() 
 		# Recevies a TCR sequences and matches it with pre-computed PSSMs
 
