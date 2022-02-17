@@ -7,6 +7,7 @@
 
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/oandrefonseca/crossdome?branch=main&svg=true)](https://ci.appveyor.com/project/oandrefonseca/crossdome)
+[![R-CMD-check](https://github.com/oandrefonseca/crossdome/workflows/R-CMD-check/badge.svg)](https://github.com/oandrefonseca/crossdome/actions)
 <!-- badges: end --> <br>
 
 ## Abstract
