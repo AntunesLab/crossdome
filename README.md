@@ -1,2 +1,3 @@
-# cross_package
+# Crossdome: An R package to measure cross-reactivity risk on the sequence-space
 
+Currently, several clinical protocols are leveraging on distinct immune mechanisms, such as adoptive T-cell therapy and peptide-based vaccines. However, multiple factors can impact the accuracy of these immune-based applications, such as expression heterogeneity, immunogenicity, and cross-reactivity (CR) risk. Crossdome was created to measure cross-reactivity potential based on biochemical properties. Our approach aims to rank potential agnostic peptides and measure cross-reactivity risk using TCR binding, and MHC presentation probability. Additionally, we provide the expression profile related to each CR candidate.
