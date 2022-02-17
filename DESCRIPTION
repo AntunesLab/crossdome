@@ -1,5 +1,5 @@
 Package: crossdome
-Title: What the Package Does (One Line, Title Case)
+Title: An R package to measure cross-reactivity risk on the sequence-space
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Andre",
@@ -8,8 +8,7 @@ Authors@R:
            email = "oandrefonseca@gmail.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
