@@ -17,6 +17,7 @@ Imports:
 	DT,
 	ggplot2,
 	Biostrings,
+	pheatmap,
 	shiny
 Suggests: 
     covr,
