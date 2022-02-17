@@ -6,8 +6,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/oandrefonseca/crossdome/workflows/R-CMD-check/badge.svg)](https://github.com/oandrefonseca/crossdome/actions)
-[![Codecov test
-coverage](https://codecov.io/gh/oandrefonseca/crossdome/branch/main/graph/badge.svg)](https://codecov.io/gh/oandrefonseca/crossdome?branch=main)
+[![Coveralls test
+coverage](https://coveralls.io/repos/github/oandrefonseca/crossdome/badge.svg)](https://coveralls.io/r/oandrefonseca/crossdome?branch=main)
 <!-- badges: end --> <br>
 
 ## Abstract
