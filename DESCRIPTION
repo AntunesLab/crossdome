@@ -19,7 +19,10 @@ Imports:
 	ComplexHeatmap,
 	Biostrings,
 	shiny
-Suggests: knitr, rmarkdown
+Suggests: 
+    covr,
+    knitr,
+    rmarkdown
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
