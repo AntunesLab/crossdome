@@ -19,5 +19,5 @@ cross_universe
 }
 \examples{
 subject <- mage_off_targets$peptide_sequence
-cross_universe(subject, allele = 'HLA*A-01:01')
+cross_universe(subject, allele = 'HLA-A*01:01')
 }

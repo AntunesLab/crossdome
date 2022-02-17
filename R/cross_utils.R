@@ -88,7 +88,6 @@ cross_universe <- function(subject, allele) {
 #' cross_expression
 #'
 #' @param epitope Description
-#' @param
 #'
 #' @return Description
 #'

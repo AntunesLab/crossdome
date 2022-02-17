@@ -14,8 +14,6 @@ cross_compose(query, subject, allele, position_weight = NULL)
 \item{allele}{Description}
 
 \item{position_weight}{Description}
-
-\item{widgets}{Description}
 }
 \value{
 Description
