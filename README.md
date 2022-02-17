@@ -4,9 +4,10 @@
 # Crossdome <a href='https://XXX.XXXXXX.org'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
-<!-- badges: end -->
 
-<br>
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/oandrefonseca/crossdome?branch=main&svg=true)](https://ci.appveyor.com/project/oandrefonseca/crossdome)
+<!-- badges: end --> <br>
 
 ## Abstract
 
