@@ -5,7 +5,6 @@
 #' @param subject Description
 #' @param allele Description
 #' @param position_weight Description
-#' @param widgets Description
 #'
 #' @return Description
 #' @export
