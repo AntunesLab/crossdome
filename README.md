@@ -4,10 +4,9 @@
 # Crossdome <a href='https://XXX.XXXXXX.org'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
+<!-- badges: end -->
 
-[![Travis build
-status](https://travis-ci.com/oandrefonseca/crossdome.svg?branch=main)](https://travis-ci.com/oandrefonseca/crossdome)
-<!-- badges: end --> <br>
+<br>
 
 ## Abstract
 
