@@ -5,8 +5,6 @@
 
 <!-- badges: start -->
 
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/oandrefonseca/crossdome?branch=main&svg=true)](https://ci.appveyor.com/project/oandrefonseca/crossdome)
 [![R-CMD-check](https://github.com/oandrefonseca/crossdome/workflows/R-CMD-check/badge.svg)](https://github.com/oandrefonseca/crossdome/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/oandrefonseca/crossdome/branch/main/graph/badge.svg)](https://codecov.io/gh/oandrefonseca/crossdome?branch=main)
