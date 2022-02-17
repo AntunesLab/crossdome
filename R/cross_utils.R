@@ -5,8 +5,8 @@
 #'
 #' @return Description
 #'
-#' @import ComplexHeatmap
-#' @importFrom ComplexHeatmap pheatmap
+#' @import pheatmap
+#' @importFrom pheatmap pheatmap
 #' @export
 #'
 #' @examples
@@ -23,7 +23,7 @@ cross_pairwise_plot <- function(query, subject) {
     query_components, subject_components)
   pairwise_matrix <- matrices_correlation$pairwise_matrix
 
-    heatmap <- ComplexHeatmap::pheatmap(
+    heatmap <- pheatmap::pheatmap(
       pairwise_matrix,
       cluster_rows = FALSE,
       cluster_cols = FALSE
