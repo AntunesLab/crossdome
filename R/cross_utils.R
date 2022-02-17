@@ -85,16 +85,43 @@ cross_universe <- function(subject, allele) {
   )
 }
 
-#' cross_expression
+#' cross_target_expression
 #'
 #' @param epitope Description
 #'
 #' @return Description
 #'
 #' @export
+#'
+#' @example
+#' epitope <- c("RIHTGEKPY", "GWLLDGTKF", "LLLLLLLLX")
+#' cross_target_expression(epitope = epitope)
 
-cross_expression <- function(epitope) {
+cross_target_expression <- function(epitope) {
   peptide_annotation <- crossdome::peptide_annotation
+  peptide_annotation <-
+    peptide_annotation[match(epitope, peptide_annotation$peptide_sequence, nomatch = 0),]
+
+  if(nrow(peptide_annotation) == 0) {
+    stop("The provided epitopes are not included on the human proteome")
+  } else {
+    diff_cases <- setdiff(epitope, peptide_annotation$peptide_sequence)
+    match_proportion <- length(unique(diff_cases)) / length(epitope)
+    warning(
+      paste0("Matching proportion equal to ",match_proportion, "%. Not mapped epitopes: ",
+             paste0(diff_cases, collapse = ",")
+      )
+    )
+  }
+
+  target_expression <- crossdome::gtex_database
+  target_expression <- merge(
+    target_expression,
+    match_proportion,
+    by = 'ensembl_id'
+  )
+
+  return(target_expression)
 }
 
 
