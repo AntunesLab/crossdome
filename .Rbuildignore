@@ -1,6 +1,7 @@
 ^cross_package\.Rproj$
 ^\.Rproj\.user$
-^appveyor\.yml$
 ^\.github$
 ^codecov\.yml$
 ^LICENSE\.md$
+notes
+*.Rmd
