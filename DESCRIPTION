@@ -21,9 +21,11 @@ Imports:
     shiny,
     corrplot
 Suggests: 
+    testthat (>= 3.0.0),
     covr,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
+Config/testthat/edition: 3
