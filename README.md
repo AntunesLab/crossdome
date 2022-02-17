@@ -1,3 +1,49 @@
-# Crossdome: An R package to measure cross-reactivity risk on the sequence-space
 
-Currently, several clinical protocols are leveraging on distinct immune mechanisms, such as adoptive T-cell therapy and peptide-based vaccines. However, multiple factors can impact the accuracy of these immune-based applications, such as expression heterogeneity, immunogenicity, and cross-reactivity (CR) risk. Crossdome was created to measure cross-reactivity potential based on biochemical properties. Our approach aims to rank potential agnostic peptides and measure cross-reactivity risk using TCR binding, and MHC presentation probability. Additionally, we provide the expression profile related to each CR candidate.
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# Crossdome <a href='https://XXX.XXXXXX.org'><img src='man/figures/logo.png' align="right" height="139" /></a>
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+<br>
+
+## Abstract
+
+**Crossdome: An R package to measure cross-reactivity risk on the
+sequence-space**
+
+Currently, several clinical protocols are leveraging on distinct immune
+mechanisms, such as adoptive T-cell therapy and peptide-based vaccines.
+However, multiple factors can impact the accuracy of these immune-based
+applications, such as expression heterogeneity, immunogenicity, and
+cross-reactivity (CR) risk. Crossdome was created to measure
+cross-reactivity potential based on biochemical properties. Our approach
+aims to rank potential agnostic peptides and measure cross-reactivity
+risk using TCR binding, and MHC presentation probability. Additionally,
+we provide the expression profile related to each CR candidate.
+
+## Description
+
+-   `cross_universe()` Description
+-   `cross_bp_summary()` Description
+-   `cross_compose()` Description
+-   `cross_browser()` Description
+
+## Installation
+
+``` r
+devtools::install_github("oandrefonseca/crossdome")
+```
+
+## Usage
+
+``` r
+library(crossdome)
+#> Warning: replacing previous import 'shiny::dataTableOutput' by
+#> 'DT::dataTableOutput' when loading 'crossdome'
+#> Warning: replacing previous import 'shiny::renderDataTable' by
+#> 'DT::renderDataTable' when loading 'crossdome'
+```
+
+## Getting help
