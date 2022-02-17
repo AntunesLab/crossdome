@@ -26,7 +26,7 @@ query <- 'EVDPIGHLY'
 subject <- mage_off_targets$peptide_sequence
 subject <- cross_universe(subject, allele = "HLA-A*01:01")
 
-result <- cross_compose(query = query, subject = subject$subject, widgets = FALSE)
+result <- cross_compose(query = query, subject = subject$subject)
 
 #
 
