@@ -1,37 +1,3 @@
-#' cross_pairwise_plot
-#'
-#' @param query Description
-#' @param subject Description
-#'
-#' @return Description
-#'
-#' @import pheatmap
-#' @importFrom pheatmap pheatmap
-#' @export
-#'
-#' @examples
-#' query <- 'EVDPIGHLY'
-#' subject <- 'EVDPIGMLY'
-#' cross_pairwise_plot(query = query, subject = subject)
-
-cross_pairwise_plot <- function(query, subject) {
-
-  query_components <- .internal_epitope_to_matrix(query)
-  subject_components <- .internal_epitope_to_matrix(subject)
-
-  matrices_correlation <- .internal_matrix_correlation(
-    query_components, subject_components)
-  pairwise_matrix <- matrices_correlation$pairwise_matrix
-
-    heatmap <- pheatmap::pheatmap(
-      pairwise_matrix,
-      cluster_rows = FALSE,
-      cluster_cols = FALSE
-    )
-
-  return(heatmap)
-}
-
 #' cross_epitope_properties
 #'
 #' @param epitope Description
@@ -94,10 +60,15 @@ cross_universe <- function(subject, allele) {
 #' @export
 #'
 #' @example
-#' epitope <- c("RIHTGEKPY", "GWLLDGTKF", "LLLLLLLLX")
+#' epitope <- c("EVDPIGHLY", "EVDPIGMLY")
 #' cross_target_expression(epitope = epitope)
 
 cross_target_expression <- function(epitope) {
+
+  if(missing(epitope)) {
+    stop("Please, select a epitope sequence.")
+  }
+
   peptide_annotation <- crossdome::peptide_annotation
   peptide_annotation <-
     peptide_annotation[match(epitope, peptide_annotation$peptide_sequence, nomatch = 0),]
@@ -117,7 +88,7 @@ cross_target_expression <- function(epitope) {
   target_expression <- crossdome::gtex_database
   target_expression <- merge(
     target_expression,
-    match_proportion,
+    peptide_annotation,
     by = 'ensembl_id'
   )
 
