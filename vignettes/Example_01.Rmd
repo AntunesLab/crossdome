@@ -26,11 +26,12 @@ query <- 'EVDPIGHLY'
 subject <- mage_off_targets$peptide_sequence
 subject <- cross_universe(subject, allele = "HLA-A*01:01")
 
-result <- cross_compose(query = query, subject = subject$subject)
+result <- cross_compose(query = query, subject = subject)
+```
 
-#
+```{r}
 
-second <- result[1, 'subject']
-cross_pairwise_plot(query = query, subject = second)
+head(result)
 
 ```
+

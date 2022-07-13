@@ -44,9 +44,10 @@ cross_universe <- function(subject, allele) {
   }
 
   return(
-    list(
-      allele = allele,
-      subject = subject
+    structure(
+      list(allele = allele,
+           peptides = subject),
+      class = "xr_universe"
     )
   )
 }
@@ -60,7 +61,7 @@ cross_universe <- function(subject, allele) {
 #' @export
 #'
 #' @example
-#' epitope <- c("EVDPIGHLY", "EVDPIGMLY")
+#' epitope <- c("EVDPIGHLY", "ESDPIVAQY")
 #' cross_target_expression(epitope = epitope)
 
 cross_target_expression <- function(epitope) {
@@ -76,11 +77,10 @@ cross_target_expression <- function(epitope) {
   if(nrow(peptide_annotation) == 0) {
     stop("The provided epitopes are not included on the human proteome")
   } else {
-    diff_cases <- setdiff(epitope, peptide_annotation$peptide_sequence)
-    match_proportion <- length(unique(diff_cases)) / length(epitope)
+    match_ratio <- setdiff(epitope, peptide_annotation$peptide_sequence)
     warning(
-      paste0("Matching proportion equal to ",match_proportion, "%. Not mapped epitopes: ",
-             paste0(diff_cases, collapse = ",")
+      paste0("Matching ration ", length(epitope) - length(match_ratio), " out of ", length(epitope), ". Not mapped epitopes. ",
+             paste0(match_ratio, collapse = ",")
       )
     )
   }
@@ -89,12 +89,11 @@ cross_target_expression <- function(epitope) {
   target_expression <- merge(
     target_expression,
     peptide_annotation,
-    by = 'ensembl_id'
+    by = c('ensembl_id', 'gene_donor')
   )
 
   return(target_expression)
 }
-
 
 #' cross_browser
 #'

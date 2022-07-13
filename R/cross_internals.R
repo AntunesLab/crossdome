@@ -71,3 +71,17 @@
 
   return(list(frobenius = frobenius, braun_score = braun_score))
 }
+
+#' head
+#' @description Print out crossdome result object
+#' @noRd
+head.xr_result <- function(object, ...) {
+  head(object$result, ...)
+}
+
+#' head
+#' @description Inspect crossdome result object
+#' @noRd
+View.xr_result <- function(object, ...) {
+  View(object$result, ...)
+}
