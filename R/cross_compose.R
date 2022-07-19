@@ -31,14 +31,11 @@ cross_compose <- function(query, background, allele, position_weight = NULL) {
   result <- do.call(rbind.data.frame, result)
   result <- result[order(result$relatedness_score, decreasing = F),]
 
-  result <- structure(
-    list(
-      position_weight = position_weight,
-      allele = background$allele,
+  result <- new('xrResult',
       result = result,
+      allele = background$allele,
+      position_weight = position_weight,
       timestamp = utils::timestamp()
-    ),
-    class = "xr_result"
   )
 
   return(result)

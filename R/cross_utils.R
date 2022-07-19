@@ -75,6 +75,10 @@ cross_universe <- function(off_targets = NULL, allele) {
 
 cross_target_expression <- function(peptides) {
 
+  if(is(x, 'xr_result')) {
+    peptides <- result$result$subject
+  }
+
   if(missing(peptides)) {
     stop("Please, select a epitope sequence.")
   }
