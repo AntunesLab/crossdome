@@ -14,7 +14,7 @@
 #' subject <- 'ESDPIVAQY'
 #' cross_pair_summary(query = query, subject = subject)
 
-cross_pair_summary <- function(query, subject, position_weight = NULL) {
+cross_pair_summary <- function(query, subject, position_weight = rep(1, 9)) {
 
   query_vector <- .internal_checking_epitope(query)
   subject_vector <- .internal_checking_epitope(subject)

@@ -1,9 +1,17 @@
 
+setMethod('cross_compose', signature(object = "xrBackground"),
+          function(object) {
+
+
+
+          }
+)
+
+
 #' Crossdome Compose
 #'
 #' @param query Description
 #' @param background Description
-#' @param allele Description
 #' @param position_weight Description
 #'
 #' @return Description
@@ -16,7 +24,7 @@
 #' background <- cross_universe(off_targets = mage_off_targets, allele = "HLA-A*01:01")
 #' result <- cross_compose(query = query, background = background)
 
-cross_compose <- function(query, background, allele, position_weight = NULL) {
+cross_compose <- function(query, background, position_weight = rep(1, 9)) {
 
   peptides <- background$peptides
 
@@ -33,7 +41,7 @@ cross_compose <- function(query, background, allele, position_weight = NULL) {
 
   result <- new('xrResult',
       result = result,
-      allele = background$allele,
+      allele = background@allele,
       position_weight = position_weight,
       timestamp = utils::timestamp()
   )

@@ -23,3 +23,24 @@ setClass("xrResult",
              timestamp   = "character"
          )
 )
+
+##' Class "xrBackground"
+##' Description
+##'
+##' @name xrBackground-class
+##' @aliases xrBackground-class
+##'
+##' @docType class
+##' @slot result Description
+##' @slot allele Allele
+##' @slot position_weight numeric
+##' @exportClass xrBackground
+##' @keywords classes
+
+setClass("xrBackground",
+         representation =
+           representation(
+             allele = "character",
+             peptides   = "character"
+           )
+)

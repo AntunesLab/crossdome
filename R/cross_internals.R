@@ -34,11 +34,10 @@
 }
 
 #' .internal_related_distance
-#' @description Returns Frobenius and Braun et al score
+#' @description Returns relatedness score based on Braun et al 2002
 #' @noRd
 
-.internal_related_distance <- function(
-    query_components, subject_components, position_weight = NULL) {
+.internal_related_distance <- function(query_components, subject_components, position_weight = NULL) {
 
   product_components <- (query_components - subject_components)**2
   relatedness_score <- sqrt(apply(product_components, 2, sum))

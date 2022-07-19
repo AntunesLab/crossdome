@@ -43,21 +43,16 @@ cross_universe <- function(off_targets = NULL, allele) {
       hla_database$hla_allele == allele, 'peptide_sequence']
   }
 
-  if(missing(off_targets)) {
-    peptides <- background
-  } else {
-    peptides <- union(off_targets, background)
+  if(!missing(off_targets)) {
+    background <- union(off_targets, background)
   }
 
-  return(
-    structure(
-      list(
-        allele = allele,
-        peptides = peptides
-        ),
-      class = "xr_background"
-    )
+  background <- new('xrBackground',
+                  allele = allele,
+                  peptides = background
   )
+
+  return(background)
 
 }
 
@@ -126,3 +121,15 @@ cross_browser <- function() {
   }
   shiny::runApp(app_directory, display.mode = "normal")
 }
+
+##' @name show
+##'
+##' @docType method
+##' @exportMethod show
+##' @importFrom utils View
+
+setMethod("show", signature(object = 'xrResult'),
+          function(object) {
+            View(object@result, title = 'Result')
+          }
+)
