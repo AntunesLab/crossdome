@@ -4,7 +4,7 @@
 \alias{cross_pair_summary}
 \title{Crossdome Summary}
 \usage{
-cross_pair_summary(query, subject, position_weight = NULL)
+cross_pair_summary(query, subject, position_weight = rep(1, 9))
 }
 \arguments{
 \item{query}{Description}

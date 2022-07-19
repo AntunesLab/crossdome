@@ -4,7 +4,7 @@
 \alias{cross_target_expression}
 \title{cross_target_expression}
 \usage{
-cross_target_expression(epitope)
+cross_target_expression(object)
 }
 \arguments{
 \item{epitope}{Description}
@@ -14,4 +14,8 @@ Description
 }
 \description{
 cross_target_expression
+}
+\examples{
+peptides <- c("EVDPIGHLY", "ESDPIVAQY")
+cross_target_expression(epitope = epitope)
 }

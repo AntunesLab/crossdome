@@ -18,11 +18,7 @@ cross_epitope_properties <- function(epitope) {
 #' @param allele Description
 #'
 #' @return Description
-#'
-#' @import shiny
-#' @importFrom shiny runApp
 #' @export
-#'
 #' @examples
 #' #' # Using default immunopeptidomics
 #' background <- cross_universe(allele = 'HLA-A*01:01')
@@ -68,11 +64,7 @@ cross_universe <- function(off_targets = NULL, allele) {
 #' peptides <- c("EVDPIGHLY", "ESDPIVAQY")
 #' cross_target_expression(epitope = epitope)
 
-cross_target_expression <- function(peptides) {
-
-  if(is(x, 'xr_result')) {
-    peptides <- result$result$subject
-  }
+cross_target_expression <- function(object) {
 
   if(missing(peptides)) {
     stop("Please, select a epitope sequence.")

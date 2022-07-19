@@ -1,18 +1,38 @@
-##' Class "xrResult"
-##' Description
-##'
-##'
-##' @name xrResult-class
-##' @aliases xrResult-class
-##'
-##' @docType class
-##' @slot result Description
-##' @slot allele Allele
-##' @slot position_weight numeric
-##' @exportClass xrResult
-##' @keywords classes
+#' Class "xrBackground"
+#' Description
+#'
+#' @name xrBackground-class
+#' @docType class
+#'
+#' @slot peptides Description
+#' @slot allele Description
+#'
+#' @exportClass xrBackground
+#' @keywords classes
 
 # http://adv-r.had.co.nz/S4.html
+
+setClass("xrBackground",
+         representation =
+           representation(
+             allele = "character",
+             peptides   = "character"
+           )
+)
+
+#' Class "xrResult"
+#' Description
+#'
+#'
+#' @name xrResult-class
+#' @docType class
+#'
+#' @slot result Description
+#' @slot allele Allele
+#' @slot position_weight numeric
+#'
+#' @exportClass xrResult
+#' @keywords classes
 
 setClass("xrResult",
          representation =
@@ -22,25 +42,4 @@ setClass("xrResult",
              position_weight = "numeric",
              timestamp   = "character"
          )
-)
-
-##' Class "xrBackground"
-##' Description
-##'
-##' @name xrBackground-class
-##' @aliases xrBackground-class
-##'
-##' @docType class
-##' @slot result Description
-##' @slot allele Allele
-##' @slot position_weight numeric
-##' @exportClass xrBackground
-##' @keywords classes
-
-setClass("xrBackground",
-         representation =
-           representation(
-             allele = "character",
-             peptides   = "character"
-           )
 )

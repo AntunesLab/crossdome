@@ -4,12 +4,12 @@
 \alias{cross_universe}
 \title{cross_universe}
 \usage{
-cross_universe(peptides = NULL, allele)
+cross_universe(off_targets = NULL, allele)
 }
 \arguments{
-\item{peptides}{Description}
-
 \item{allele}{Description}
+
+\item{peptides}{Description}
 }
 \value{
 Description
@@ -18,6 +18,12 @@ Description
 cross_universe
 }
 \examples{
-peptides <- mage_off_targets$peptide_sequence
-cross_universe(peptides, allele = 'HLA-A*01:01')
+#' # Using default immunopeptidomics
+background <- cross_universe(allele = 'HLA-A*01:01')
+
+# Using MAGE3A off-targets
+data('mage_off_targets')
+
+mage_off_targets <- mage_off_targets$peptide_sequence
+background <- cross_universe(off_targets = mage_off_targets, allele = "HLA-A*01:01")
 }
