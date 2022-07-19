@@ -2,7 +2,7 @@
 #' Crossdome Compose
 #'
 #' @param query Description
-#' @param subject Description
+#' @param background Description
 #' @param allele Description
 #' @param position_weight Description
 #'
@@ -13,12 +13,12 @@
 #' data('mage_off_targets')
 #'
 #' query <- 'EVDPIGHLY'
-#' subject <- mage_off_targets$peptide_sequence
-#' rank <- cross_compose(query = query, subject = subject)
+#' off_targets <- mage_off_targets$peptide_sequence
+#' rank <- cross_compose(query = query, background = off_targets)
 
-cross_compose <- function(query, subject, allele, position_weight = NULL) {
+cross_compose <- function(query, background, allele, position_weight = NULL) {
 
-  peptides <- subject$peptides
+  peptides <- background$peptides
 
   if(length(peptides) > 1) {
     result <- lapply(peptides, function(off_target) {
@@ -34,7 +34,7 @@ cross_compose <- function(query, subject, allele, position_weight = NULL) {
   result <- structure(
     list(
       position_weight = position_weight,
-      allele = subject$allele,
+      allele = background$allele,
       result = result,
       timestamp = utils::timestamp()
     ),

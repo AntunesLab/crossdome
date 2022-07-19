@@ -3,7 +3,6 @@
 #' @param query Description
 #' @param subject Description
 #' @param position_weight Description
-#' @param method Description
 #'
 #' @importFrom stats cor.test
 #'
@@ -15,7 +14,7 @@
 #' subject <- 'ESDPIVAQY'
 #' cross_pair_summary(query = query, subject = subject)
 
-cross_pair_summary <- function(query, subject, position_weight = NULL, method = c("pearson", "kendall", "spearman")) {
+cross_pair_summary <- function(query, subject, position_weight = NULL) {
 
   query_vector <- .internal_checking_epitope(query)
   subject_vector <- .internal_checking_epitope(subject)
@@ -24,17 +23,11 @@ cross_pair_summary <- function(query, subject, position_weight = NULL, method = 
     quit("Please, the input sequence should have same length.")
   }
 
-  n_mismatch <- length(query_vector) - sum(query_vector == subject_vector)
-  n_positive <- sum(base::diag(BLOSUM80[query_vector, subject_vector]) > 0)
+  n_mismatch <- length(query_vector) - base::sum(query_vector == subject_vector)
+  n_positive <- base::sum(base::diag(BLOSUM80[query_vector, subject_vector]) > 0)
 
   query_components <- .internal_epitope_to_matrix(query_vector)
   subject_components <- .internal_epitope_to_matrix(subject_vector)
-
-  pairwise_matrix <- stats::cor(
-    query_components, subject_components, method = method)
-
-  pvalue <- stats::cor.test(query_components, subject_components)$p.value
-  diagonal_score <- (sum(base::diag(pairwise_matrix))**2) / length(query_vector)
 
   if(length(position_weight) == length(query_vector)) {
     matrices_score <- .internal_matrix_metrics(query_components, subject_components, position_weight)
@@ -48,10 +41,7 @@ cross_pair_summary <- function(query, subject, position_weight = NULL, method = 
       subject = subject,
       n_positive = n_positive,
       n_mismatch = n_mismatch,
-      diagonal_score = diagonal_score,
-      pvalue = pvalue,
-      frobenius = matrices_score$frobenius,
-      braun_score = matrices_score$braun_score
+      relatedness = matrices_score$braun_score
     )
   )
 }

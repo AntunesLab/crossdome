@@ -31,7 +31,20 @@ result <- cross_compose(query = query, subject = subject)
 
 ```{r}
 
-head(result)
+# Contra background
+background <- cross_universe(allele = "HLA-A*01:01")
+result <- cross_compose(query = query, background = background)
+
+
+```
+
+
+```{r}
+
+subject <- mage_off_targets$peptide_sequence
+background <- cross_universe(peptides = mage_off_target, allele = "HLA-A*01:01")
+
+result <- cross_compose(query = query, subject = background)
 
 ```
 

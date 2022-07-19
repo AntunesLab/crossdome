@@ -29,47 +29,23 @@
   return(epitope_to_matrix)
 }
 
-#' .internal_matrix_correlation
-#' @description Returns Frobenius and Braun et al score
-#' @noRd
-
-.internal_matrix_correlation <- function(
-  query_components,
-  subject_components,
-  method = c("pearson", "kendall", "spearman")
-  ) {
-
-  pairwise_matrix <- stats::cor(
-    query_components, subject_components, method = method)
-  pvalue <- cor.test(query_components, subject_components)$p.value
-  diagonal_score <- sum(base::diag(pairwise_matrix)) / length(query_components)
-
-  return(
-    list(
-      pairwise_matrix = pairwise_matrix,
-      pvalue = pvalue,
-      diagonal_score = diagonal_score)
-    )
-}
-
 #' .internal_matrix_metrics
 #' @description Returns Frobenius and Braun et al score
 #' @noRd
 
-.internal_matrix_metrics <- function(query_components, subject_components, position_weight = NULL) {
+.internal_matrix_metrics <- function(
+    query_components, subject_components, position_weight = NULL) {
 
   product_components <- (query_components - subject_components)**2
-  frobenius <- sum(product_components)
-  braun_score <- sqrt(apply(product_components, 2, sum))
+  relatedness_score <- sqrt(apply(product_components, 2, sum))
 
   if(!is.null(position_weight)) {
-    position_weight_sqrt <- sqrt(position_weight)
-    braun_score <- braun_score * position_weight_sqrt
+    relatedness_score <- relatedness_score * sqrt(position_weight)
   }
 
-  braun_score <- sum(braun_score) / ncol(query_components)
+  relatedness_score <- sum(relatedness_score) / ncol(query_components)
 
-  return(list(frobenius = frobenius, braun_score = braun_score))
+  return(list(relatedness_score = relatedness_score))
 }
 
 #' head

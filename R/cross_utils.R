@@ -14,7 +14,7 @@ cross_epitope_properties <- function(epitope) {
 
 #' cross_universe
 #'
-#' @param subject Description
+#' @param peptides Description
 #' @param allele Description
 #'
 #' @return Description
@@ -24,10 +24,10 @@ cross_epitope_properties <- function(epitope) {
 #' @export
 #'
 #' @examples
-#' subject <- mage_off_targets$peptide_sequence
-#' cross_universe(subject, allele = 'HLA-A*01:01')
+#' peptides <- mage_off_targets$peptide_sequence
+#' cross_universe(peptides, allele = 'HLA-A*01:01')
 
-cross_universe <- function(subject, allele) {
+cross_universe <- function(peptides = NULL, allele) {
 
   hla_database <- crossdome::hla_database
   allele_list <- unique(hla_database$hla_allele)
@@ -37,17 +37,17 @@ cross_universe <- function(subject, allele) {
       hla_database$hla_allele == allele, 'peptide_sequence']
   }
 
-  if(missing(subject)) {
-    subject <- background
+  if(missing(peptides)) {
+    peptides <- background
   } else {
-    subject <- union(subject, background)
+    peptides <- union(peptides, background)
   }
 
   return(
     structure(
       list(allele = allele,
-           peptides = subject),
-      class = "xr_universe"
+           background = peptides),
+      class = "xr_background"
     )
   )
 }
