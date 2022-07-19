@@ -4,12 +4,7 @@
 \alias{cross_pair_summary}
 \title{Crossdome Summary}
 \usage{
-cross_pair_summary(
-  query,
-  subject,
-  position_weight = NULL,
-  method = c("pearson", "kendall", "spearman")
-)
+cross_pair_summary(query, subject, position_weight = NULL)
 }
 \arguments{
 \item{query}{Description}
@@ -17,8 +12,6 @@ cross_pair_summary(
 \item{subject}{Description}
 
 \item{position_weight}{Description}
-
-\item{method}{Description}
 }
 \value{
 Description

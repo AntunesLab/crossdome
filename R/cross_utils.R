@@ -24,10 +24,16 @@ cross_epitope_properties <- function(epitope) {
 #' @export
 #'
 #' @examples
-#' peptides <- mage_off_targets$peptide_sequence
-#' cross_universe(peptides, allele = 'HLA-A*01:01')
+#' #' # Using default immunopeptidomics
+#' background <- cross_universe(allele = 'HLA-A*01:01')
+#'
+#' # Using MAGE3A off-targets
+#' data('mage_off_targets')
+#'
+#' mage_off_targets <- mage_off_targets$peptide_sequence
+#' background <- cross_universe(off_targets = mage_off_targets, allele = "HLA-A*01:01")
 
-cross_universe <- function(peptides = NULL, allele) {
+cross_universe <- function(off_targets = NULL, allele) {
 
   hla_database <- crossdome::hla_database
   allele_list <- unique(hla_database$hla_allele)
@@ -37,19 +43,22 @@ cross_universe <- function(peptides = NULL, allele) {
       hla_database$hla_allele == allele, 'peptide_sequence']
   }
 
-  if(missing(peptides)) {
+  if(missing(off_targets)) {
     peptides <- background
   } else {
-    peptides <- union(peptides, background)
+    peptides <- union(off_targets, background)
   }
 
   return(
     structure(
-      list(allele = allele,
-           background = peptides),
+      list(
+        allele = allele,
+        peptides = peptides
+        ),
       class = "xr_background"
     )
   )
+
 }
 
 #' cross_target_expression
@@ -60,26 +69,26 @@ cross_universe <- function(peptides = NULL, allele) {
 #'
 #' @export
 #'
-#' @example
-#' epitope <- c("EVDPIGHLY", "ESDPIVAQY")
+#' @examples
+#' peptides <- c("EVDPIGHLY", "ESDPIVAQY")
 #' cross_target_expression(epitope = epitope)
 
-cross_target_expression <- function(epitope) {
+cross_target_expression <- function(peptides) {
 
-  if(missing(epitope)) {
+  if(missing(peptides)) {
     stop("Please, select a epitope sequence.")
   }
 
   peptide_annotation <- crossdome::peptide_annotation
   peptide_annotation <-
-    peptide_annotation[match(epitope, peptide_annotation$peptide_sequence, nomatch = 0),]
+    peptide_annotation[match(peptides, peptide_annotation$peptide_sequence, nomatch = 0),]
 
   if(nrow(peptide_annotation) == 0) {
     stop("The provided epitopes are not included on the human proteome")
   } else {
-    match_ratio <- setdiff(epitope, peptide_annotation$peptide_sequence)
+    match_ratio <- setdiff(peptides, peptide_annotation$peptide_sequence)
     warning(
-      paste0("Matching ration ", length(epitope) - length(match_ratio), " out of ", length(epitope), ". Not mapped epitopes. ",
+      paste0("Matching ration ", length(peptides) - length(match_ratio), " out of ", length(peptides), ". Not mapped epitopes. ",
              paste0(match_ratio, collapse = ",")
       )
     )
@@ -93,6 +102,7 @@ cross_target_expression <- function(epitope) {
   )
 
   return(target_expression)
+
 }
 
 #' cross_browser

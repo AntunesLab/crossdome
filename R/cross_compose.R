@@ -12,9 +12,9 @@
 #' @examples
 #' data('mage_off_targets')
 #'
-#' query <- 'EVDPIGHLY'
-#' off_targets <- mage_off_targets$peptide_sequence
-#' rank <- cross_compose(query = query, background = off_targets)
+#' mage_off_targets <- mage_off_targets$peptide_sequence
+#' background <- cross_universe(off_targets = mage_off_targets, allele = "HLA-A*01:01")
+#' result <- cross_compose(query = query, background = background)
 
 cross_compose <- function(query, background, allele, position_weight = NULL) {
 
@@ -29,7 +29,7 @@ cross_compose <- function(query, background, allele, position_weight = NULL) {
   }
 
   result <- do.call(rbind.data.frame, result)
-  result <- result[order(result$diagonal_score, decreasing = T), ]
+  result <- result[order(result$relatedness_score, decreasing = F),]
 
   result <- structure(
     list(
@@ -42,4 +42,5 @@ cross_compose <- function(query, background, allele, position_weight = NULL) {
   )
 
   return(result)
+
 }

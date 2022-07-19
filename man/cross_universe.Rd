@@ -4,10 +4,10 @@
 \alias{cross_universe}
 \title{cross_universe}
 \usage{
-cross_universe(subject, allele)
+cross_universe(peptides = NULL, allele)
 }
 \arguments{
-\item{subject}{Description}
+\item{peptides}{Description}
 
 \item{allele}{Description}
 }
@@ -18,6 +18,6 @@ Description
 cross_universe
 }
 \examples{
-subject <- mage_off_targets$peptide_sequence
-cross_universe(subject, allele = 'HLA-A*01:01')
+peptides <- mage_off_targets$peptide_sequence
+cross_universe(peptides, allele = 'HLA-A*01:01')
 }

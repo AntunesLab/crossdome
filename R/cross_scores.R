@@ -30,9 +30,9 @@ cross_pair_summary <- function(query, subject, position_weight = NULL) {
   subject_components <- .internal_epitope_to_matrix(subject_vector)
 
   if(length(position_weight) == length(query_vector)) {
-    matrices_score <- .internal_matrix_metrics(query_components, subject_components, position_weight)
+    relatedness_score <- .internal_related_distance(query_components, subject_components, position_weight)
   } else {
-    matrices_score <- .internal_matrix_metrics(query_components, subject_components)
+    relatedness_score <- .internal_related_distance(query_components, subject_components)
   }
 
   return(
@@ -41,7 +41,8 @@ cross_pair_summary <- function(query, subject, position_weight = NULL) {
       subject = subject,
       n_positive = n_positive,
       n_mismatch = n_mismatch,
-      relatedness = matrices_score$braun_score
+      relatedness_score = relatedness_score
     )
   )
+
 }
