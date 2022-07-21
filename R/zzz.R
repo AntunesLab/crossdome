@@ -1,4 +1,6 @@
 ##' @importFrom utils packageDescription
+# Should I mentioned third-party software?
+
 .onAttach <- function(libname, pkgname) {
   pkgVersion <- packageDescription(pkgname, fields="Version")
 

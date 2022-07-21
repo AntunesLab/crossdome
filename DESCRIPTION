@@ -19,7 +19,9 @@ Imports:
     Biostrings,
     pheatmap,
     shiny,
-    corrplot
+    corrplot,
+    magrittr,
+    dplyr
 Suggests: 
     testthat (>= 3.0.0),
     covr,

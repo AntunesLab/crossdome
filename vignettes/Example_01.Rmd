@@ -28,13 +28,32 @@ show(result)
 
 ```{r}
 
-data('mage_off_targets')
-mage_off_targets <- mage_off_targets$peptide_sequence
+result_top <- result %>%
+   filter(relatedness_score <= 20)
 
+if(FALSE) {
+  cross_write(result_top, file = "crossdome_top_results.tsv")
+}
+
+```
+
+```{r}
+
+data('mage_off_targets')
+
+mage_off_targets <- mage_off_targets$peptide_sequence
 background <- cross_universe(off_targets = mage_off_targets, allele = "HLA-A*01:01")
 
 result <- cross_compose(query = query, background = background)
-show(result)
+
+```
+
+```{r}
+
+result <- result %>%
+  mutate(
+    off_target = ifelse(subject %in% mage_off_targets, "Yes", "No")
+  )
 
 ```
 

@@ -114,14 +114,32 @@ cross_browser <- function() {
   shiny::runApp(app_directory, display.mode = "normal")
 }
 
-##' @name show
-##'
-##' @docType method
-##' @exportMethod show
-##' @importFrom utils View
+#' show
+#' @name show
+#'
+#' @param object Description
+#' @docType method
+#' @exportMethod show
+#' @importFrom utils View
 
 setMethod("show", signature(object = 'xrResult'),
           function(object) {
             View(object@result, title = 'Result')
+          }
+)
+
+# Cross_write
+#' @name cross_write
+#'
+#' @param object Description
+#' @docType method
+#' @exportMethod show
+#' @importFrom utils write.table
+
+setMethod("cross_write", signature(object = 'xrResult'),
+          function(object, file = "", append = FALSE, quote = FALSE, sep = "\t",
+                   eol = "\n", na = "NA", dec = ".", row.names = FALSE, col.names = TRUE,
+                   qmethod = c("escape", "double"), fileEncoding = "") {
+            write.table(object@result, file = file, quote = quote, sep = sep, row.names = row.names)
           }
 )
