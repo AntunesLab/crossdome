@@ -1,6 +1,6 @@
 #' @method select xrResult
 #' @importFrom dplyr select
-#' @improtFrom dplyr quos
+#' @importFrom dplyr quos
 #' @export
 
 select.xrResult <- function(.data, ..., .preserve = FALSE) {
@@ -15,6 +15,7 @@ select.xrResult <- function(.data, ..., .preserve = FALSE) {
 
 #' @method filter xrResult
 #' @importFrom dplyr filter
+#' @importFrom dplyr quos
 #' @export
 
 filter.xrResult <- function(.data, ..., .preserve = FALSE) {
@@ -29,6 +30,7 @@ filter.xrResult <- function(.data, ..., .preserve = FALSE) {
 
 #' @method mutate xrResult
 #' @importFrom dplyr mutate
+#' @importFrom dplyr quos
 #' @export
 
 mutate.xrResult <- function(.data, ...) {

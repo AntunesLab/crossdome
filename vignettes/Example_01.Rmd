@@ -8,43 +8,27 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
 ```
 
-```{r}
+```{r, warning = FALSE}
 
 library(crossdome)
+library(dplyr)
 
-query <- 'EVDPIGHLY'
-background <- cross_universe(allele = "HLA-A*01:01")
-
-result <- cross_compose(query = query, background = background)
-show(result)
+background <- cross_universe(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
+result <- cross_compose(query = 'EVDPIGHLY', object = background)
 
 ```
 
 ```{r}
 
-result_top <- result %>%
-   filter(relatedness_score <= 20)
-
-if(FALSE) {
-  cross_write(result_top, file = "crossdome_top_results.tsv")
-}
-
-```
-
-```{r}
-
-data('mage_off_targets')
-
-mage_off_targets <- mage_off_targets$peptide_sequence
-background <- cross_universe(off_targets = mage_off_targets, allele = "HLA-A*01:01")
-
-result <- cross_compose(query = query, background = background)
+str(result)
 
 ```
 
@@ -52,13 +36,40 @@ result <- cross_compose(query = query, background = background)
 
 result <- result %>%
   mutate(
-    off_target = ifelse(subject %in% mage_off_targets, "Yes", "No")
+    off_target = ifelse(subject == "ESDPIVAQY", "Yes", "No")
   )
+
+```
+
+```{r fig.height = 14, fig.width = 12, paged.print = TRUE}
+
+result <- cross_expression_matrix(result, pvalue_threshold = 0.005)
+cross_expression_heatmap(object = result)
+
+```
+
+```{r fig.height = 8, fig.width = 12, paged.print = TRUE}
+
+#cross_prediction_plot(object = result)
+#cross_xr_risk_plot(object = result)
 
 ```
 
 ```{r}
 
-#cross_target_expression(peptides = result$result$subject)
+#result <- cross_substitution_matrix(result)
+#cross_substitution_plot(object = result)
+
+```
+
+
+```{r}
+
+#result_top <- result %>%
+#   filter(pvalue <= 0.01)
+
+if(FALSE) {
+    cross_write(result_top, file = "/tmp/crossdome_top_results.tsv")
+}
 
 ```

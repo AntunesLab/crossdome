@@ -1,0 +1,34 @@
+---
+title: "Example 02"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Benchmarking with yeast-displayed peptides}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+```
+
+```{r load_environment, warning = FALSE}
+
+library(crossdome)
+library(dplyr)
+
+data('mage_off_targets')
+mage_off_targets <- mage_off_targets$peptide_sequence
+
+```
+
+```{r}
+
+background <- cross_universe(off_targets = mage_off_targets, allele = "HLA-A*01:01")
+result <- cross_compose(query = 'EVDPIGHLY', background = background)
+
+```

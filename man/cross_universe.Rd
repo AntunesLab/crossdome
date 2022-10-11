@@ -18,7 +18,7 @@ Description
 cross_universe
 }
 \examples{
-#' # Using default immunopeptidomics
+# Using default immunopeptidomics
 background <- cross_universe(allele = 'HLA-A*01:01')
 
 # Using MAGE3A off-targets

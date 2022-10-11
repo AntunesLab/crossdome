@@ -9,7 +9,7 @@
 #' cross_epitope_properties('EVDPIGHLY')
 
 cross_epitope_properties <- function(epitope) {
-  return(.internal_epitope_to_matrix(epitope))
+  return(.internal_peptide_to_matrix(epitope))
 }
 
 #' cross_universe
@@ -20,7 +20,7 @@ cross_epitope_properties <- function(epitope) {
 #' @return Description
 #' @export
 #' @examples
-#' #' # Using default immunopeptidomics
+#' # Using default immunopeptidomics
 #' background <- cross_universe(allele = 'HLA-A*01:01')
 #'
 #' # Using MAGE3A off-targets
@@ -45,56 +45,118 @@ cross_universe <- function(off_targets = NULL, allele) {
 
   background <- new('xrBackground',
                   allele = allele,
-                  peptides = background
+                  peptides = background,
+                  stats = list(
+                    'off-target' = ifelse(is.null(off_targets), 0, length(off_targets)),
+                    'database' = length(background)
+                  )
   )
 
   return(background)
 
 }
 
-#' cross_target_expression
-#'
-#' @param epitope Description
+#' @name cross_expression_matrix
+#' @docType methods
+#' @param object Description
+#' @param pvalue_threshold Description
 #'
 #' @return Description
 #'
-#' @export
+#' @exportMethod cross_expression_matrix
 #'
 #' @examples
-#' peptides <- c("EVDPIGHLY", "ESDPIVAQY")
-#' cross_target_expression(epitope = epitope)
+#'
+#' result <- crossdome::mage_result
+#' cross_expression_matrix(object = result)
 
-cross_target_expression <- function(object) {
+setMethod(
+  'cross_expression_matrix', signature(object = "xrResult"),
+  function(object, pvalue_threshold = 0.01) {
 
-  if(missing(peptides)) {
-    stop("Please, select a epitope sequence.")
-  }
+    provisional <- object@result[
+      object@result$pvalue <= pvalue_threshold, ]
 
-  peptide_annotation <- crossdome::peptide_annotation
-  peptide_annotation <-
-    peptide_annotation[match(peptides, peptide_annotation$peptide_sequence, nomatch = 0),]
+    peptides <- provisional$subject
+    peptide_annotation <- crossdome::peptide_annotation
 
-  if(nrow(peptide_annotation) == 0) {
-    stop("The provided epitopes are not included on the human proteome")
-  } else {
-    match_ratio <- setdiff(peptides, peptide_annotation$peptide_sequence)
-    warning(
-      paste0("Matching ration ", length(peptides) - length(match_ratio), " out of ", length(peptides), ". Not mapped epitopes. ",
-             paste0(match_ratio, collapse = ",")
+    peptide_annotation <-
+      peptide_annotation[match(peptides, peptide_annotation$peptide_sequence, nomatch = 0),]
+
+    if(nrow(peptide_annotation) == 0) {
+      stop("The provided epitopes are not included on the human proteome")
+    } else {
+      match_ratio <- setdiff(peptides, peptide_annotation$peptide_sequence)
+      warning(
+        paste0("Matching ration ", length(peptides) - length(match_ratio), " out of ", length(peptides), ". Not mapped epitopes. ",
+               paste0(match_ratio, collapse = ",")
+        )
       )
+    }
+
+    target_expression <- crossdome::gtex_database
+    target_expression <- merge(
+      target_expression,
+      peptide_annotation,
+      by = c('ensembl_id', 'gene_donor')
     )
+
+    result <- new('xrResult',
+                  query = object@query,
+                  result = object@result,
+                  allele = object@allele,
+                  position_weight = object@position_weight,
+                  expression = list(
+                    'data' = target_expression,
+                    'umapped' = match_ratio,
+                    'pvalue' = pvalue_threshold
+                  ),
+                  timestamp = object@timestamp
+    )
+
+    return(result)
+
   }
+)
 
-  target_expression <- crossdome::gtex_database
-  target_expression <- merge(
-    target_expression,
-    peptide_annotation,
-    by = c('ensembl_id', 'gene_donor')
-  )
+#' @name cross_substitution_matrix
+#'
+#' @param object Description
+#' @param top Description
+#'
+#' @return Description
+#'
+#' @import ggplot2
+#' @import patchwork
+#' @importFrom universalmotif create_motif view_motifs
+#' @importFrom Biostrings AAStringSet
+#'
+#' @exportMethod cross_substitution_matrix
+#'
+#' @examples
+#' if(FALSE) {
+#'  result <- cross_substitution_matrix(object = result)
+#' }
 
-  return(target_expression)
+setMethod('cross_substitution_matrix', signature(object = "xrResult"),
+    function(object, pvalue_threshold = 0.01) {
 
-}
+      object@result <- object@result[
+        object@result$pvalue <= pvalue_threshold, ]
+
+      if(nrow(object@result) == 0) {
+        quit(
+          paste0("The result object is empty. Check your threshold, pvalue_threshold ≤", pvalue_threshold)
+        )
+      }
+
+      peptides <- Biostrings::AAStringSet(object@result$subject)
+      prob_pos <- universalmotif::create_motif(peptides, type = 'PPM')
+
+      return(prob_pos@matrix)
+
+    }
+)
 
 #' cross_browser
 #'
@@ -122,9 +184,9 @@ cross_browser <- function() {
 #' @exportMethod show
 #' @importFrom utils View
 
-setMethod("show", signature(object = 'xrResult'),
+setMethod('show', signature(object = 'xrResult'),
           function(object) {
-            View(object@result, title = 'Result')
+            utils::View(object@result, title = 'Result')
           }
 )
 
@@ -136,7 +198,7 @@ setMethod("show", signature(object = 'xrResult'),
 #' @exportMethod show
 #' @importFrom utils write.table
 
-setMethod("cross_write", signature(object = 'xrResult'),
+setMethod('cross_write', signature(object = 'xrResult'),
           function(object, file = "", append = FALSE, quote = FALSE, sep = "\t",
                    eol = "\n", na = "NA", dec = ".", row.names = FALSE, col.names = TRUE,
                    qmethod = c("escape", "double"), fileEncoding = "") {

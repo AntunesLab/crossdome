@@ -16,8 +16,15 @@ setClass("xrBackground",
          representation =
            representation(
              allele = "character",
-             peptides   = "character"
-           )
+             peptides   = "character",
+             stats = "list"
+           ),
+         validity = function(object) {
+           ninemer <- all(sapply(object@peptides, nchar) == 9)
+           if(!ninemer) {
+             print("Please, Crossdome only supports 9-mer peptides.")
+           }
+         }
 )
 
 #' Class "xrResult"
@@ -37,8 +44,11 @@ setClass("xrBackground",
 setClass("xrResult",
          representation =
            representation(
+             query = "character",
              result = "data.frame",
              allele = "character",
+             expression = "list",
+             analysis = "list",
              position_weight = "numeric",
              timestamp   = "character"
          )

@@ -1,3 +1,40 @@
+
+# [X] Create a warning message regarding background size on the cross_universe() function;
+# [] Is cross_compose insering the query peptide on the background by default? Make it optional.
+# [] immogenicity_predictions should be associated with hla_database?
+
+# [X] Implement p-value considering the random distribution
+
+average: 31.97307
+variance: 34.03793
+standard: 5.834203
+
+# [X] Adding ESDPIVAQY (TITIN) into data('mage_off_targets') <
+# [X] Cleaning and Adding the IEDB DATABASE to data("hla_database") <
+# [X] Cleaning and creating PREDICTIONS DATABASE <
+# [] Should I create a function that cross_compose the table as shiny app?
+
+# [] Cross_annotate
+# [] TEST SOME RANDOM INPUTS
+#   [X] cross_universe is accepting peptides longer than 9-mers
+
+# [] cross_compose has to return all the information in a single data.frame. [NOT A GOOD IDEA]
+# [] Increment object xrResult with annotation and expression <<<<<<<<<<<<<<
+
+
+# [] Implement prediction plots
+# [] Implement seqlog + substitution plot  <<<<<<<<<<<<<<<<
+# [] Implement tissue-enrichment per rank plot
+
+# [] Double-check expression database (gene, tissues expression, exp_breadth_category)
+# [] Cross-HLA comparison?
+
+
+# [] Add getcontacts from 5BRZ crystal - add reference
+# [] Create a function to normalize hotspot map <
+
+#
+
 usethis::use_data(MDS_COMPONENTS, BLOSUM80, internal = TRUE, overwrite = TRUE)
 ellipsis - https://techvidvan.com/tutorials/r-arguments/
 Shiny app And R package - https://deanattali.com/2015/04/21/r-package-shiny-app/
@@ -10,7 +47,7 @@ Shiny app And R package - https://deanattali.com/2015/04/21/r-package-shiny-app/
 			-- internal_tcr_weights()
 		-- internal_align_metrics()
 	-- cross_tcr_alignment() # Skipping it...
-		-- internal_tcr_weights() 
+		-- internal_tcr_weights()
 		# Recevies a TCR sequences and matches it with pre-computed PSSMs
 
 # cross_internals
@@ -24,7 +61,7 @@ Shiny app And R package - https://deanattali.com/2015/04/21/r-package-shiny-app/
 			-- BLOSUM80
 	-- internal_tcr_weights()
 		-- parameters: CDR3 sequence and HLA allele (?)
-		-- return: 
+		-- return:
 
 # cross_utils
  - all plot functions and dynamic datatable
@@ -40,3 +77,4 @@ Shiny app And R package - https://deanattali.com/2015/04/21/r-package-shiny-app/
 	-- cross_compose()
 		-- parameters: peptide, hla_allele, universe, tcr_pssm
 		-- returns: cross_report_table()
+
