@@ -23,7 +23,8 @@ Imports:
     corrplot,
     magrittr,
     dplyr,
-    ComplexHeatmap
+    ComplexHeatmap,
+    patchwork
 Suggests: 
     testthat (>= 3.0.0),
     covr,
