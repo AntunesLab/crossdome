@@ -5,12 +5,14 @@
 \alias{cross_expression_matrix}
 \title{cross_expression_matrix}
 \usage{
-cross_expression_matrix(object)
+cross_expression_matrix(object, ...)
 
-\S4method{cross_expression_matrix}{xrResult}(object)
+\S4method{cross_expression_matrix}{xrResult}(object, pvalue_threshold = 0.01)
 }
 \arguments{
 \item{object}{Description}
+
+\item{pvalue_threshold}{Description}
 }
 \value{
 Description

@@ -13,8 +13,7 @@
 # http://adv-r.had.co.nz/S4.html
 
 setClass("xrBackground",
-         representation =
-           representation(
+         slots = c(
              allele = "character",
              peptides   = "character",
              stats = "list"
@@ -42,8 +41,7 @@ setClass("xrBackground",
 #' @keywords classes
 
 setClass("xrResult",
-         representation =
-           representation(
+         slots = c(
              query = "character",
              result = "data.frame",
              allele = "character",

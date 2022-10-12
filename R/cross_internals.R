@@ -74,6 +74,7 @@
   }, simplify = FALSE)
 
   ppm_data <- do.call('rbind', ppm_data)
+  ppm_data$position <- as.factor(ppm_data$position)
 
   return(ppm_data)
 

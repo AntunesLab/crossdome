@@ -33,7 +33,7 @@ cross_pairwise_plot <- function(query, subject) {
   return(heatmap)
 }
 
-#' @name cross_expression_heatmap
+#' @name cross_expression_plot
 #'
 #' @param object Description
 #' @param pvalue_threshold Description
@@ -43,17 +43,17 @@ cross_pairwise_plot <- function(query, subject) {
 #' @import ComplexHeatmap
 #' @importFrom grid gpar unit
 #'
-#' @exportMethod cross_expression_heatmap
+#' @exportMethod cross_expression_plot
 #'
 #' @examples
 #' if(FALSE) {
 #'
 #' result <- cross_expression_matrix(object = result)
-#' cross_expression_heatmap(object = result)
+#' cross_expression_plot(object = result)
 #' }
 
 setMethod(
-  'cross_expression_heatmap', signature(object = "xrResult"),
+  'cross_expression_plot', signature(object = "xrResult"),
   function(object) {
 
     if(nrow(object@result) == 0) {
@@ -66,7 +66,7 @@ setMethod(
     gene_donor_list <- expression_matrix$gene_donor
 
     expression_matrix <- as.matrix(
-      expression_matrix[, 3:(ncol(expression_matrix)-1)]
+      expression_matrix[, 4:(ncol(expression_matrix)-3)]
     )
 
     rownames(expression_matrix) <- gene_donor_list
@@ -74,6 +74,7 @@ setMethod(
 
     p1 <- ComplexHeatmap::pheatmap(
       expression_matrix,
+      name = "mRNA Z-score",
       scale = 'row',
       run_draw = FALSE
     )
@@ -90,6 +91,7 @@ setMethod(
 
     heatmap <- ComplexHeatmap::draw(p1 + p2)
     return(heatmap)
+
   }
 
 )
@@ -125,8 +127,7 @@ setMethod('cross_substitution_plot', signature(object = "xrResult"),
      )
    }
 
-
-   p1 <- universalmotif::view_motifs(prob_pos, use.type = 'PPM', sort.positions = T) +
+   p1 <- universalmotif::view_motifs(substitution, use.type = 'PPM', sort.positions = T) +
      labs(y = "Probability") +
      theme(
        axis.text.x = element_text(size = 18, color = 'black'),
@@ -142,9 +143,9 @@ setMethod('cross_substitution_plot', signature(object = "xrResult"),
      )
 
    x_axis_sequence <- .internal_checking_peptide(object@query)
-   x_axis_sequence <- setNames(1:9, x_axis_sequence)
+   x_axis_sequence <- setNames(x_axis_sequence, 1:9)
 
-   p2 <- ggplot(prob_pivoted, aes(x = position, y = reorder(aminoacid, -aa_idx), fill = ppm)) +
+   p2 <- ggplot(substitution_pivoted, aes(x = position, y = reorder(aminoacid, -aa_idx), fill = ppm)) +
      geom_tile(colour = "grey", size = 0.45) +
      labs(x = NULL, y = 'Substitution', fill = "Probability") +
      scale_y_discrete(expand = c(0, 0)) +
@@ -159,4 +160,32 @@ setMethod('cross_substitution_plot', signature(object = "xrResult"),
    return(plot_seq)
 
  }
+)
+
+#' @name cross_prediction_plot
+#'
+#' @param object Description
+#' @param top Description
+#'
+#' @return Description
+#'
+#' @import ggplot2
+#' @import patchwork
+#' @importFrom universalmotif create_motif view_motifs
+#' @importFrom Biostrings AAStringSet
+#'
+#' @exportMethod cross_prediction_plot
+#'
+#' @examples
+#' if(FALSE) {
+#'  cross_prediction_plot(object = result)
+#' }
+
+
+setMethod('cross_substitution_plot', signature(object = "xrResult"),
+          function(object) {
+
+            # CODE^
+
+          }
 )

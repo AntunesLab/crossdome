@@ -59,18 +59,3 @@
 #' @source \url{http://}
 #' @source \url{http://}
 "peptide_annotation"
-
-#' GTEx Database
-#'
-#' Description
-#'
-#' @format A data frame with XXXX rows and XXXX variables:
-#' \describe{
-#'   \item{ensembl_id}{Description}
-#'   \item{genename}{Description}
-#'   \item{tissue}{Description}
-#'   \item{tpm}{Description}
-#' }
-#' @source \url{http://}
-#' @source \url{http://}
-"gtex_database"

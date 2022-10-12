@@ -44,29 +44,32 @@ result <- result %>%
 ```{r fig.height = 14, fig.width = 12, paged.print = TRUE}
 
 result <- cross_expression_matrix(result, pvalue_threshold = 0.005)
-cross_expression_heatmap(object = result)
+cross_expression_plot(object = result)
 
 ```
 
-```{r fig.height = 8, fig.width = 12, paged.print = TRUE}
+```{r fig.height=8, fig.width=12, paged.print=FALSE}
 
 #cross_prediction_plot(object = result)
 #cross_xr_risk_plot(object = result)
 
 ```
 
-```{r}
+```{r fig.height = 10, fig.width = 6, paged.print = TRUE}
 
-#result <- cross_substitution_matrix(result)
-#cross_substitution_plot(object = result)
+result <- cross_substitution_matrix(result)
+cross_substitution_plot(object = result)
 
 ```
 
-
 ```{r}
 
-#result_top <- result %>%
-#   filter(pvalue <= 0.01)
+result_top <- result %>%
+   filter(pvalue <= 0.01)
+
+```
+
+```{r}
 
 if(FALSE) {
     cross_write(result_top, file = "/tmp/crossdome_top_results.tsv")

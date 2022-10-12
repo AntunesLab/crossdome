@@ -35,15 +35,23 @@ cross_universe <- function(off_targets = NULL, allele) {
   allele_list <- unique(hla_database$hla_allele)
 
   if(allele %in% allele_list) {
+
     background <- hla_database[
       hla_database$hla_allele == allele, 'peptide_sequence']
+
+  } else {
+
+    quit(paste0("Crossdome does not supports the ", allele, ". For more details check the documentation."))
+
   }
 
   if(!missing(off_targets)) {
+
     background <- union(off_targets, background)
+
   }
 
-  background <- new('xrBackground',
+  object <- new('xrBackground',
                   allele = allele,
                   peptides = background,
                   stats = list(
@@ -52,7 +60,7 @@ cross_universe <- function(off_targets = NULL, allele) {
                   )
   )
 
-  return(background)
+  return(object)
 
 }
 
@@ -84,7 +92,7 @@ setMethod(
       peptide_annotation[match(peptides, peptide_annotation$peptide_sequence, nomatch = 0),]
 
     if(nrow(peptide_annotation) == 0) {
-      stop("The provided epitopes are not included on the human proteome")
+      stop("The provided epitopes are not included on the human proteome.")
     } else {
       match_ratio <- setdiff(peptides, peptide_annotation$peptide_sequence)
       warning(
@@ -94,27 +102,22 @@ setMethod(
       )
     }
 
-    target_expression <- crossdome::gtex_database
+    target_expression <- crossdome::hpa_database
     target_expression <- merge(
       target_expression,
       peptide_annotation,
       by = c('ensembl_id', 'gene_donor')
     )
 
-    result <- new('xrResult',
-                  query = object@query,
-                  result = object@result,
-                  allele = object@allele,
-                  position_weight = object@position_weight,
-                  expression = list(
-                    'data' = target_expression,
-                    'umapped' = match_ratio,
-                    'pvalue' = pvalue_threshold
-                  ),
-                  timestamp = object@timestamp
+    target_expression <- target_expression[, c(1, 2, 43, 3:42)]
+
+    object@expression = list(
+      'data' = target_expression,
+      'umapped' = match_ratio,
+      'pvalue' = pvalue_threshold
     )
 
-    return(result)
+    return(object)
 
   }
 )
@@ -141,19 +144,24 @@ setMethod(
 setMethod('cross_substitution_matrix', signature(object = "xrResult"),
     function(object, pvalue_threshold = 0.01) {
 
-      object@result <- object@result[
+      provisional <- object@result[
         object@result$pvalue <= pvalue_threshold, ]
 
-      if(nrow(object@result) == 0) {
+      if(nrow(provisional) == 0) {
         quit(
           paste0("The result object is empty. Check your threshold, pvalue_threshold ≤", pvalue_threshold)
         )
       }
 
-      peptides <- Biostrings::AAStringSet(object@result$subject)
+      peptides <- Biostrings::AAStringSet(provisional$subject)
       prob_pos <- universalmotif::create_motif(peptides, type = 'PPM')
 
-      return(prob_pos@matrix)
+      object@analysis <- list(
+        'substitution' = prob_pos@motif,
+        'pvalue' = pvalue_threshold
+      )
+
+      return(object)
 
     }
 )
@@ -186,14 +194,16 @@ cross_browser <- function() {
 
 setMethod('show', signature(object = 'xrResult'),
           function(object) {
-            utils::View(object@result, title = 'Result')
+            return(
+              utils::View(object@result, title = 'Result')
+            )
           }
 )
 
-# Cross_write
 #' @name cross_write
 #'
-#' @param object Description
+#' @param object crossdome xrResult object
+#' @param file 	path to output file.
 #' @docType method
 #' @exportMethod show
 #' @importFrom utils write.table
@@ -205,3 +215,6 @@ setMethod('cross_write', signature(object = 'xrResult'),
             write.table(object@result, file = file, quote = quote, sep = sep, row.names = row.names)
           }
 )
+
+
+#

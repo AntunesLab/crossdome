@@ -16,10 +16,10 @@ setGeneric('cross_expression_matrix', function(object, ...) {
   standardGeneric("cross_expression_matrix")
 })
 
-#' cross_expression_heatmap
+#' cross_expression_plot
 #' @export
-setGeneric('cross_expression_heatmap', function(object) {
-  standardGeneric("cross_expression_heatmap")
+setGeneric('cross_expression_plot', function(object) {
+  standardGeneric("cross_expression_plot")
 })
 
 #' cross_substitution_matrix
