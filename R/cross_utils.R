@@ -217,4 +217,5 @@ setMethod('cross_write', signature(object = 'xrResult'),
 )
 
 
-#
+# cross_custom_prediction
+# cross_custom_annotation

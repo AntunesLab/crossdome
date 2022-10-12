@@ -4,12 +4,6 @@ setGeneric('cross_compose', function(query, object, position_weight = rep(1, 9))
   standardGeneric("cross_compose")
 })
 
-#' cross_write
-#' @export
-setGeneric('cross_write', function(object, ...) {
-  standardGeneric("cross_write")
-})
-
 #' cross_expression_matrix
 #' @export
 setGeneric('cross_expression_matrix', function(object, ...) {
@@ -32,4 +26,10 @@ setGeneric('cross_substitution_matrix', function(object, ...) {
 #' @export
 setGeneric('cross_substitution_plot', function(object) {
   standardGeneric("cross_substitution_plot")
+})
+
+#' cross_write
+#' @export
+setGeneric('cross_write', function(object, ...) {
+  standardGeneric("cross_write")
 })
