@@ -28,6 +28,12 @@ setGeneric('cross_substitution_plot', function(object) {
   standardGeneric("cross_substitution_plot")
 })
 
+#' cross_prediction_plot
+#' @export
+setGeneric('cross_prediction_plot', function(object) {
+  standardGeneric("cross_prediction_plot")
+})
+
 #' cross_write
 #' @export
 setGeneric('cross_write', function(object, ...) {

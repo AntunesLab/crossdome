@@ -182,10 +182,10 @@ setMethod('cross_substitution_plot', signature(object = "xrResult"),
 #' }
 
 
-setMethod('cross_substitution_plot', signature(object = "xrResult"),
+setMethod('cross_prediction_plot', signature(object = "xrResult"),
           function(object) {
 
-            # CODE^
+            print("CODE")
 
           }
 )

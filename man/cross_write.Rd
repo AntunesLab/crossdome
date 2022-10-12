@@ -23,7 +23,9 @@ cross_write(object, ...)
 )
 }
 \arguments{
-\item{object}{Description}
+\item{object}{crossdome xrResult object}
+
+\item{file}{path to output file.}
 }
 \description{
 cross_write

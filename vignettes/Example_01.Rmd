@@ -50,13 +50,13 @@ cross_expression_plot(object = result)
 
 ```{r}
 
-table(result@expression$data$Group)
+#table(result@expression$data$Group)
 
 ```
 
 ```{r}
 
-table(hpa_database$Group)
+#table(hpa_database$Group)
 ```
 
 ```{r fig.height=8, fig.width=12, paged.print=FALSE}
