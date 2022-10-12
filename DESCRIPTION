@@ -14,7 +14,6 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 biocViews:
-    ComplexHeatmap
 Imports:
     DT,
     ggplot2,
@@ -23,7 +22,8 @@ Imports:
     shiny,
     corrplot,
     magrittr,
-    dplyr
+    dplyr,
+    ComplexHeatmap
 Suggests: 
     testthat (>= 3.0.0),
     covr,
