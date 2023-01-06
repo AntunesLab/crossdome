@@ -21,23 +21,14 @@ knitr::opts_chunk$set(
 library(crossdome)
 library(dplyr)
 
-background <- cross_universe(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
-result <- cross_compose(query = 'EVDPIGHLY', object = background)
+database <- cross_universe(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
+result <- cross_compose(query = 'EVDPIGHLY', background = database)
 
 ```
 
 ```{r}
 
 str(result)
-
-```
-
-```{r}
-
-result <- result %>%
-  mutate(
-    off_target = ifelse(subject == "ESDPIVAQY", "Yes", "No")
-  )
 
 ```
 
@@ -50,20 +41,7 @@ cross_expression_plot(object = result)
 
 ```{r}
 
-#table(result@expression$data$Group)
-
-```
-
-```{r}
-
-#table(hpa_database$Group)
-```
-
-```{r fig.height=8, fig.width=12, paged.print=FALSE}
-
-#cross_prediction_plot(object = result)
-#cross_xr_risk_plot(object = result)
-
+cross_enrichment_plot(object = result)
 ```
 
 ```{r fig.height = 10, fig.width = 6, paged.print = TRUE}
@@ -75,15 +53,8 @@ cross_substitution_plot(object = result)
 
 ```{r}
 
-result_top <- result %>%
-   filter(pvalue <= 0.01)
-
-```
-
-```{r}
-
 if(FALSE) {
-    cross_write(result_top, file = "/tmp/crossdome_top_results.tsv")
+      cross_write(result, file = "/tmp/crossdome_results.tsv")
 }
 
 ```

@@ -28,7 +28,7 @@ mage_off_targets <- mage_off_targets$peptide_sequence
 
 ```{r}
 
-background <- cross_universe(off_targets = mage_off_targets, allele = "HLA-A*01:01")
-result <- cross_compose(query = 'EVDPIGHLY', object = background)
+database <- cross_universe(off_targets = mage_off_targets, allele = "HLA-A*01:01")
+result <- cross_compose(query = 'EVDPIGHLY', background = database)
 
 ```

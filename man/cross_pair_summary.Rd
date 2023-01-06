@@ -2,22 +2,22 @@
 % Please edit documentation in R/cross_scores.R
 \name{cross_pair_summary}
 \alias{cross_pair_summary}
-\title{Crossdome Summary}
+\title{Crossdome relatedness score}
 \usage{
 cross_pair_summary(query, subject, position_weight = rep(1, 9))
 }
 \arguments{
-\item{query}{Description}
+\item{query}{A peptide target. Only 9-mers are supported.}
 
-\item{subject}{Description}
+\item{subject}{Putative off-target candidate. Only 9-mers are supported.}
 
-\item{position_weight}{Description}
+\item{position_weight}{A numeric vector derived from TCR hotspots}
 }
 \value{
-Description
+Returns the \code{list} holding Crossdome metrics
 }
 \description{
-Crossdome Summary
+Calculates relatedness score between peptides
 }
 \examples{
 query <- 'EVDPIGHLY'

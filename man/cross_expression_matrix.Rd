@@ -3,25 +3,26 @@
 \docType{methods}
 \name{cross_expression_matrix}
 \alias{cross_expression_matrix}
-\title{cross_expression_matrix}
+\title{Collecting gene-donor expression data}
 \usage{
-cross_expression_matrix(object, ...)
-
-\S4method{cross_expression_matrix}{xrResult}(object, pvalue_threshold = 0.01)
+\S4method{cross_expression_matrix}{xrResult}(object, rank = NULL, pvalue_threshold = 0.01)
 }
 \arguments{
-\item{object}{Description}
+\item{object}{Depends on xrResult object. Run \code{\link{cross_compose}} function.}
 
-\item{pvalue_threshold}{Description}
+\item{rank}{A numeric value to filter number of candidates}
+
+\item{pvalue_threshold}{P-value threshold}
 }
 \value{
-Description
+Return a matrix containing mRNA expression across healthy tissues
 }
 \description{
-cross_expression_matrix
+Collecting gene-donor expression data
 }
 \examples{
-
+\dontrun{
 result <- crossdome::mage_result
 cross_expression_matrix(object = result)
+}
 }

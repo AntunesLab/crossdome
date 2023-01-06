@@ -64,18 +64,28 @@
 
 .internal_prettify <- function(ppm_matrix) {
 
-  ppm_data <- sapply(1:length(rownames(ppm_matrix)), function(x) {
+  amino_acids <- c("Y", "W", "V", "T", "S", "R", "Q", "P", "N", "M", "L", "K", "I", "H", "G", "F", "E", "D", "C", "A")
+  ppm_data <- sapply(1:length(amino_acids), function(x) {
     data.frame(
       aa_idx = x,
       position = 1:9,
-      aminoacid = rownames(ppm_matrix)[x],
-      ppm = ppm_matrix[x, ]
+      aminoacid = amino_acids[x],
+      ppm = ppm_matrix[amino_acids[x], ]
     )
   }, simplify = FALSE)
 
   ppm_data <- do.call('rbind', ppm_data)
-  ppm_data$position <- as.factor(ppm_data$position)
-
   return(ppm_data)
 
 }
+
+#' .internal_matrix_correlation
+#' @noRd
+
+.internal_matrix_correlation <- function(query_components, subject_components) {
+
+  peptide_correlation <- cor(query_components, subject_components)
+  return(peptide_correlation)
+
+}
+

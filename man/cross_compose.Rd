@@ -3,29 +3,32 @@
 \docType{methods}
 \name{cross_compose}
 \alias{cross_compose}
-\title{cross_compose}
+\title{Performing Crossdome screening}
 \usage{
-cross_compose(query, object, position_weight = rep(1, 9))
+cross_compose(query, background, position_weight = rep(1, 9))
 
-\S4method{cross_compose}{ANY,xrBackground}(query, object, position_weight = rep(1, 9))
+\S4method{cross_compose}{ANY,xrBackground}(query, background, position_weight = rep(1, 9))
 }
 \arguments{
-\item{query}{Description}
+\item{query}{A peptide target. Only 9-mers are supported.}
 
-\item{position_weight}{Description}
+\item{background}{Background object create with \code{\link{cross_universe}}}
 
-\item{background}{Description}
+\item{position_weight}{A numeric vector derived from TCR hotspots}
 }
 \value{
-Description
+Returns a \code{\link{xrResult}} object containing relatedness ranking
 }
 \description{
-cross_compose
+Predicts relatedness among peptides in a given database. Low values are associated with cross-reactive candidates.
 }
 \examples{
+\dontrun{
 data('mage_off_targets')
 
 mage_off_targets <- mage_off_targets$peptide_sequence
 background <- cross_universe(off_targets = mage_off_targets, allele = "HLA-A*01:01")
-result <- cross_compose(query = query, background = background)
+result <- cross_compose(query = query, background = background
+
+}
 }

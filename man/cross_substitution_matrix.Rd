@@ -2,25 +2,27 @@
 % Please edit documentation in R/AllGenerics.R, R/cross_utils.R
 \name{cross_substitution_matrix}
 \alias{cross_substitution_matrix}
-\title{cross_substitution_matrix}
+\title{Substitution matrix analysis}
 \usage{
 cross_substitution_matrix(object, ...)
 
-\S4method{cross_substitution_matrix}{xrResult}(object, pvalue_threshold = 0.01)
+\S4method{cross_substitution_matrix}{xrResult}(object, rank = NULL, pvalue_threshold = 0.01)
 }
 \arguments{
-\item{object}{Description}
+\item{object}{Depends on xrResult object. Run \code{\link{cross_compose}} function.}
 
-\item{top}{Description}
+\item{rank}{A numeric value to filter number of candidates}
+
+\item{pvalue_threshold}{P-value threshold}
 }
 \value{
-Description
+Returns a \code{matrix} with amino acid substitution probabilies
 }
 \description{
-cross_substitution_matrix
+Calculates position-specific substitution across cross-reactive candidates
 }
 \examples{
-if(FALSE) {
+\dontrun{
  result <- cross_substitution_matrix(object = result)
 }
 }

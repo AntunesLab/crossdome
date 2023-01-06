@@ -1,25 +1,35 @@
-#' cross_epitope_properties
+#' @name cross_epitope_properties
+#' @title Converting peptide to biochemical properties
 #'
-#' @param epitope Description
+#' @param query A peptide target. Only 9-mers are supported.
 #'
-#' @return Description
+#' @return Returns a matrix related to the biochemical profile
 #' @export
 #'
 #' @examples
 #' cross_epitope_properties('EVDPIGHLY')
 
-cross_epitope_properties <- function(epitope) {
-  return(.internal_peptide_to_matrix(epitope))
+cross_epitope_properties <- function(query) {
+  return(.internal_peptide_to_matrix(query))
 }
 
-#' cross_universe
+#' @name cross_universe
+#' @title Creating immunopeptidomics database
 #'
-#' @param peptides Description
-#' @param allele Description
+#' @description Peptide database spanning eluted candidates (experimentally validated) and custom (user-defined).
 #'
-#' @return Description
+#' @param off_targets A list of off-target candidates. Only 9-mers are supported.
+#' @param allele Input an MHC Class I allele. Please, check \code{\link{hla_database}}.
+#'
+#' @return Returns a \code{\link{xrBackground}} object
 #' @export
 #' @examples
+#' \dontrun{
+#'
+#' # Listing MHC class I alleles
+#' data('hla_database')
+#' View(hla_database)
+#'
 #' # Using default immunopeptidomics
 #' background <- cross_universe(allele = 'HLA-A*01:01')
 #'
@@ -28,6 +38,8 @@ cross_epitope_properties <- function(epitope) {
 #'
 #' mage_off_targets <- mage_off_targets$peptide_sequence
 #' background <- cross_universe(off_targets = mage_off_targets, allele = "HLA-A*01:01")
+#'
+#'}
 
 cross_universe <- function(off_targets = NULL, allele) {
 
@@ -66,24 +78,31 @@ cross_universe <- function(off_targets = NULL, allele) {
 
 #' @name cross_expression_matrix
 #' @docType methods
-#' @param object Description
-#' @param pvalue_threshold Description
 #'
-#' @return Description
+#' @param object Depends on xrResult object. Run \code{\link{cross_compose}} function.
+#' @param rank A numeric value to filter number of candidates
+#' @param pvalue_threshold P-value threshold
+#'
+#' @return Return a matrix containing mRNA expression across healthy tissues
 #'
 #' @exportMethod cross_expression_matrix
 #'
 #' @examples
-#'
+#' \dontrun{
 #' result <- crossdome::mage_result
 #' cross_expression_matrix(object = result)
+#' }
 
 setMethod(
   'cross_expression_matrix', signature(object = "xrResult"),
-  function(object, pvalue_threshold = 0.01) {
+  function(object, rank = NULL, pvalue_threshold = 0.01) {
 
     provisional <- object@result[
       object@result$pvalue <= pvalue_threshold, ]
+
+    if(!is.null(rank)) {
+      provisional <- head(provisional, n = rank)
+    }
 
     peptides <- provisional$subject
     peptide_annotation <- crossdome::peptide_annotation
@@ -96,7 +115,7 @@ setMethod(
     } else {
       match_ratio <- setdiff(peptides, peptide_annotation$peptide_sequence)
       warning(
-        paste0("Matching ration ", length(peptides) - length(match_ratio), " out of ", length(peptides), ". Not mapped epitopes. ",
+        paste0("Found ", length(peptides) - length(match_ratio), " peptides out of ", length(peptides), ". Unmapped peptides: ",
                paste0(match_ratio, collapse = ",")
         )
       )
@@ -124,10 +143,13 @@ setMethod(
 
 #' @name cross_substitution_matrix
 #'
-#' @param object Description
-#' @param top Description
+#' @description Calculates position-specific substitution across cross-reactive candidates
 #'
-#' @return Description
+#' @param object Depends on xrResult object. Run \code{\link{cross_compose}} function.
+#' @param rank A numeric value to filter number of candidates
+#' @param pvalue_threshold P-value threshold
+#'
+#' @return Returns a `matrix` with amino acid substitution probabilies
 #'
 #' @import ggplot2
 #' @import patchwork
@@ -137,15 +159,19 @@ setMethod(
 #' @exportMethod cross_substitution_matrix
 #'
 #' @examples
-#' if(FALSE) {
+#' \dontrun{
 #'  result <- cross_substitution_matrix(object = result)
 #' }
 
 setMethod('cross_substitution_matrix', signature(object = "xrResult"),
-    function(object, pvalue_threshold = 0.01) {
+    function(object, rank = NULL, pvalue_threshold = 0.01) {
 
       provisional <- object@result[
         object@result$pvalue <= pvalue_threshold, ]
+
+      if(!is.null(rank)) {
+        provisional <- head(provisional, n = rank)
+      }
 
       if(nrow(provisional) == 0) {
         quit(
@@ -166,15 +192,25 @@ setMethod('cross_substitution_matrix', signature(object = "xrResult"),
     }
 )
 
-#' cross_browser
+#' @name cross_browser
+#' @title Launching Crossdome web application
 #'
-#' @return Description
+#' @description Opens an interactive shiny application
 #'
-#' @import shiny
+#' @return
+#'
 #' @importFrom DT dataTableOutput
 #' @importFrom DT renderDataTable
 #' @importFrom shiny runApp
 #' @export
+#' @examples
+#' \dontrun{
+#'
+#'  # Opening the shiny application
+#'  cross_browser()
+#'
+#' }
+
 
 cross_browser <- function() {
   app_directory <- system.file("cross_browser", package = "crossdome")
@@ -184,11 +220,11 @@ cross_browser <- function() {
   shiny::runApp(app_directory, display.mode = "normal")
 }
 
-#' show
 #' @name show
+#' @title show
 #'
-#' @param object Description
-#' @docType method
+#' @param object Depends on xrResult object. Run \code{\link{cross_compose}} function.
+#'
 #' @exportMethod show
 #' @importFrom utils View
 
@@ -202,9 +238,11 @@ setMethod('show', signature(object = 'xrResult'),
 
 #' @name cross_write
 #'
-#' @param object crossdome xrResult object
-#' @param file 	path to output file.
-#' @docType method
+#' @description Export Crossdome object to a tsv file
+#'
+#' @param object Depends on xrResult object. Run `cross_compose` function.
+#' @param file File or connection to write to.
+#'
 #' @exportMethod show
 #' @importFrom utils write.table
 
@@ -215,7 +253,3 @@ setMethod('cross_write', signature(object = 'xrResult'),
             write.table(object@result, file = file, quote = quote, sep = sep, row.names = row.names)
           }
 )
-
-
-# cross_custom_prediction
-# cross_custom_annotation

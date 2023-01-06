@@ -2,25 +2,23 @@
 % Please edit documentation in R/AllGenerics.R, R/cross_plots.R
 \name{cross_expression_plot}
 \alias{cross_expression_plot}
-\title{cross_expression_plot}
+\title{Expression heatmap}
 \usage{
 cross_expression_plot(object)
 
 \S4method{cross_expression_plot}{xrResult}(object)
 }
 \arguments{
-\item{object}{Description}
-
-\item{pvalue_threshold}{Description}
+\item{object}{Depends on xrResult object. Run \code{\link{cross_compose}} function.}
 }
 \value{
-Description
+Returns a combined \code{ComplexHeatmap} object
 }
 \description{
-cross_expression_plot
+Plot a heatmap presenting the gene donor expression profile
 }
 \examples{
-if(FALSE) {
+\dontrun{
 
 result <- cross_expression_matrix(object = result)
 cross_expression_plot(object = result)

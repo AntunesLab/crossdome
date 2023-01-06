@@ -3,11 +3,9 @@
 \docType{class}
 \name{xrResult-class}
 \alias{xrResult-class}
-\title{Class "xrResult"
-Description}
+\title{Class "xrResult"}
 \description{
-Class "xrResult"
-Description
+The Crossdome main object
 }
 \section{Slots}{
 

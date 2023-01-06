@@ -19,12 +19,12 @@ standard: 5.834203
 #   [X] cross_universe is accepting peptides longer than 9-mers
 
 # [] cross_compose has to return all the information in a single data.frame. [NOT A GOOD IDEA]
-# [] Increment object xrResult with annotation and expression <<<<<<<<<<<<<<
+# [X] Increment object xrResult with annotation and expression <<<<<<<<<<<<<<
 
 
 # [] Implement prediction plots
 # [X] Implement seqlog + substitution plot  <<<<<<<<<<<<<<<<
-# [] Implement tissue-enrichment per rank plot
+# [X] Implement tissue-enrichment per rank plot <<<<<<<<<<<<<<<
 
 # [] Double-check expression database (gene, tissues expression, exp_breadth_category)
 # [] Cross-HLA comparison?
@@ -79,4 +79,12 @@ Shiny app And R package - https://deanattali.com/2015/04/21/r-package-shiny-app/
 	-- cross_compose()
 		-- parameters: peptide, hla_allele, universe, tcr_pssm
 		-- returns: cross_report_table()
+
+# ----------
+
+result <- cross_expression_matrix(result, pvalue_threshold = 0.002)
+cross_expression_plot(object = result)
+
+View(result@expression$data)
+saveRDS(object = result@expression$data, file = "../../data/result_expression.RDS")
 

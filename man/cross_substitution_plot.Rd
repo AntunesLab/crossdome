@@ -2,25 +2,23 @@
 % Please edit documentation in R/AllGenerics.R, R/cross_plots.R
 \name{cross_substitution_plot}
 \alias{cross_substitution_plot}
-\title{cross_substitution_plot}
+\title{Substitution heatmap}
 \usage{
 cross_substitution_plot(object)
 
 \S4method{cross_substitution_plot}{xrResult}(object)
 }
 \arguments{
-\item{object}{Description}
-
-\item{top}{Description}
+\item{object}{Depends on xrResult object. Run \code{\link{cross_compose}} function.}
 }
 \value{
-Description
+Returns a heatmap-like figure showing substitution rate
 }
 \description{
-cross_substitution_plot
+Plot a heatmap combined with seqlogo displaying amino acid substitutions
 }
 \examples{
-if(FALSE) {
+\dontrun{
  cross_substitution_plot(object = result)
 }
 }

@@ -2,18 +2,18 @@
 % Please edit documentation in R/cross_utils.R
 \name{cross_epitope_properties}
 \alias{cross_epitope_properties}
-\title{cross_epitope_properties}
+\title{Converting peptide to biochemical properties}
 \usage{
-cross_epitope_properties(epitope)
+cross_epitope_properties(query)
 }
 \arguments{
-\item{epitope}{Description}
+\item{query}{A peptide target. Only 9-mers are supported.}
 }
 \value{
-Description
+Returns a matrix related to the biochemical profile
 }
 \description{
-cross_epitope_properties
+Converting peptide to biochemical properties
 }
 \examples{
 cross_epitope_properties('EVDPIGHLY')

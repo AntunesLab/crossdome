@@ -2,13 +2,21 @@
 % Please edit documentation in R/cross_utils.R
 \name{cross_browser}
 \alias{cross_browser}
-\title{cross_browser}
+\title{Launching Crossdome web application}
 \usage{
 cross_browser()
 }
 \value{
-Description
+
 }
 \description{
-cross_browser
+Opens an interactive shiny application
+}
+\examples{
+\dontrun{
+
+ # Opening the shiny application
+ cross_browser()
+
+}
 }

@@ -13,9 +13,9 @@ ui <- navbarPage("Crossdome App",
                            radioButtons("weights",
                                               h3("Allele input:"),
                                               choices = list(
-                                                  "Biochemical properties only " = 1,
-                                                  "Crystal-derived TCR Weight" = 2,
-                                                  "Predicted TCR Weight" = 3
+                                                  "Biochemical properties (Default) " = 1,
+                                                  "Structure-derived TCR Weight" = 2
+                                                  #"Predicted TCR Weight" = 3
                                                   ),
                                               selected = 1),
                            actionButton("submit", "Submit", class = "btn-primary"),
@@ -45,12 +45,12 @@ server <- function(input, output) {
         if(TRUE) {
             position_weight <- list(
                 `1` = rep(1, 9),
-                `2` = c(0.33, 0.31, 0.33, 0.66, 0.21, 0.25, 0.12, 0.18, 0.33),
-                `3` = rep(1, 9)
+                `2` = c(0.33, 0.31, 0.33, 0.66, 0.21, 0.25, 0.12, 0.18, 0.33)
+                #`3` = rep(1, 9)
             )
 
             position_weight <- position_weight[[input$weights]]
-            cross_background <- crossdome::cross_universe(subject = c(), allele = input$allele)
+            cross_background <- crossdome::cross_universe(off_targets = NULL, allele = input$allele)
 
             cross_result <- data.frame()
 
@@ -58,14 +58,16 @@ server <- function(input, output) {
                 message = "Calculating...", value = 0, {
                     cross_result <- crossdome::cross_compose(
                         query = input$peptide,
-                        subject = cross_background$subject,
-                        allele = input$allele,
+                        object = cross_background,
                         position_weight = position_weight
                     )
                 }
             )
         }
+
+        cross_result <- cross_result@result
         dplyr::mutate_if(cross_result, is.numeric, round, 2)
+
     })
 
     output$input_text <- renderText({

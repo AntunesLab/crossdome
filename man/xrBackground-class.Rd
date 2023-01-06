@@ -3,11 +3,9 @@
 \docType{class}
 \name{xrBackground-class}
 \alias{xrBackground-class}
-\title{Class "xrBackground"
-Description}
+\title{Class "xrBackground"}
 \description{
-Class "xrBackground"
-Description
+An object holding data from \code{\link{hla_database}}
 }
 \section{Slots}{
 

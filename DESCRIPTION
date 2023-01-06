@@ -1,5 +1,5 @@
 Package: crossdome
-Title: An R package to measure cross-reactivity risk on the sequence-space
+Title: An R package to measure cross-reactivity risk in the sequence-space
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Andre",
@@ -22,7 +22,6 @@ Imports:
     shiny,
     corrplot,
     magrittr,
-    dplyr,
     ComplexHeatmap,
     patchwork,
     universalmotif

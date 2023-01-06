@@ -2,22 +2,28 @@
 % Please edit documentation in R/cross_utils.R
 \name{cross_universe}
 \alias{cross_universe}
-\title{cross_universe}
+\title{Creating immunopeptidomics database}
 \usage{
 cross_universe(off_targets = NULL, allele)
 }
 \arguments{
-\item{allele}{Description}
+\item{off_targets}{A list of off-target candidates. Only 9-mers are supported.}
 
-\item{peptides}{Description}
+\item{allele}{Input an MHC Class I allele. Please, check \code{\link{hla_database}}.}
 }
 \value{
-Description
+Returns a \code{\link{xrBackground}} object
 }
 \description{
-cross_universe
+Peptide database spanning eluted candidates (experimentally validated) and custom (user-defined).
 }
 \examples{
+\dontrun{
+
+# Listing MHC class I alleles
+data('hla_database')
+View(hla_database)
+
 # Using default immunopeptidomics
 background <- cross_universe(allele = 'HLA-A*01:01')
 
@@ -26,4 +32,6 @@ data('mage_off_targets')
 
 mage_off_targets <- mage_off_targets$peptide_sequence
 background <- cross_universe(off_targets = mage_off_targets, allele = "HLA-A*01:01")
+
+}
 }

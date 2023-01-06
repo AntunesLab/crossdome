@@ -1,5 +1,5 @@
 #' Class "xrBackground"
-#' Description
+#' @description An object holding data from \code{\link{hla_database}}
 #'
 #' @name xrBackground-class
 #' @docType class
@@ -9,8 +9,6 @@
 #'
 #' @exportClass xrBackground
 #' @keywords classes
-
-# http://adv-r.had.co.nz/S4.html
 
 setClass("xrBackground",
          slots = c(
@@ -27,8 +25,7 @@ setClass("xrBackground",
 )
 
 #' Class "xrResult"
-#' Description
-#'
+#' @description The Crossdome main object
 #'
 #' @name xrResult-class
 #' @docType class

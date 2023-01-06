@@ -1,12 +1,14 @@
-#' Crossdome Summary
+#' Crossdome relatedness score
 #'
-#' @param query Description
-#' @param subject Description
-#' @param position_weight Description
+#' @description Calculates relatedness score between peptides
+#'
+#' @param query A peptide target. Only 9-mers are supported.
+#' @param subject Putative off-target candidate. Only 9-mers are supported.
+#' @param position_weight A numeric vector derived from TCR hotspots
 #'
 #' @importFrom stats cor.test
 #'
-#' @return Description
+#' @return Returns the `list` holding Crossdome metrics
 #' @export
 #'
 #' @examples
