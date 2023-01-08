@@ -28,12 +28,12 @@ options(tibble.print_min = 5, tibble.print_max = 5)
 
 Currently, several clinical protocols are leveraging on distinct immune mechanisms, such as adoptive T-cell therapy and peptide-based vaccines. However, multiple factors can impact the accuracy of these immune-based applications, such as expression heterogeneity, immunogenicity, and cross-reactivity (CR) risk. Crossdome was created to measure cross-reactivity potential based on biochemical properties. Our approach aims to rank potential agnostic peptides and measure cross-reactivity risk using TCR binding, and MHC presentation probability. Additionally, we provide the expression profile related to each CR candidate.
 
-## Description
+## Features
 
-* `cross_universe()` Description
-* `cross_bp_summary()` Description
-* `cross_compose()` Description
-* `cross_browser()` Description
+* `cross_universe()` Peptide database spanning eluted candidates (experimentally validated) and custom (user-defined).
+* `cross_pair_summary()` Calculates relatedness score between peptides
+* `cross_compose()` Predicts relatedness among peptides in a given database. Low values are associated with cross-reactive candidates.
+* `cross_browser()` Opens an interactive shiny application
 
 ## Installation
 

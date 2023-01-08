@@ -27,25 +27,25 @@ we provide the expression profile related to each CR candidate.
 
 ## Description
 
--   `cross_universe()` Description
--   `cross_bp_summary()` Description
--   `cross_compose()` Description
--   `cross_browser()` Description
+- `cross_universe()` Peptide database spanning eluted candidates
+  (experimentally validated) and custom (user-defined).
+- `cross_pair_summary()` Calculates relatedness score between peptides
+- `cross_compose()` Predicts relatedness among peptides in a given
+  database. Low values are associated with cross-reactive candidates.
+- `cross_browser()` Opens an interactive shiny application
 
 ## Installation
 
 ``` r
+
 devtools::install_github("oandrefonseca/crossdome")
 ```
 
 ## Usage
 
 ``` r
+
 library(crossdome)
-#> Warning: replacing previous import 'shiny::dataTableOutput' by
-#> 'DT::dataTableOutput' when loading 'crossdome'
-#> Warning: replacing previous import 'shiny::renderDataTable' by
-#> 'DT::renderDataTable' when loading 'crossdome'
 ```
 
 ## Getting help
