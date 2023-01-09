@@ -1,4 +1,6 @@
 .Rproj.user
+.Rproj
+codecov.yml
 .Rhistory
 .RData
 .Ruserdata
