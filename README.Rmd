@@ -14,11 +14,14 @@ knitr::opts_chunk$set(
 options(tibble.print_min = 5, tibble.print_max = 5)
 ```
 
-# Crossdome <a href='https://XXX.XXXXXX.org'><img src='man/figures/logo.png' align="right" height="139" /></a>
+# Crossdome <a href=''><img src="man/figures/logo.png" align="right" height="139"/></a>
 
 <!-- badges: start -->
+
 [![R-CMD-check](https://github.com/oandrefonseca/crossdome/workflows/R-CMD-check/badge.svg)](https://github.com/oandrefonseca/crossdome/actions)
+
 <!-- badges: end -->
+
 <br>
 
 ## Abstract
@@ -29,10 +32,10 @@ Currently, several clinical protocols are leveraging on distinct immune mechanis
 
 ## Features
 
-* `cross_universe()` Peptide database spanning eluted candidates (experimentally validated) and custom (user-defined).
-* `cross_pair_summary()` Calculates relatedness score between peptides
-* `cross_compose()` Predicts relatedness among peptides in a given database. Low values are associated with cross-reactive candidates.
-* `cross_browser()` Opens an interactive shiny application
+-   `cross_universe()` Peptide database spanning eluted candidates (experimentally validated) and custom (user-defined).
+-   `cross_pair_summary()` Calculates relatedness score between peptides
+-   `cross_compose()` Predicts relatedness among peptides in a given database. Low values are associated with cross-reactive candidates.
+-   `cross_browser()` Opens an interactive shiny application
 
 ## Installation
 
@@ -42,13 +45,24 @@ devtools::install_github("oandrefonseca/crossdome")
 
 ```
 
-## Usage
+## Basic Usage
 
 ```{r, message = FALSE}
 
 library(crossdome)
 
+database <- cross_universe(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
+result <- cross_compose(query = 'EVDPIGHLY', background = database)
+str(result)
+
 ```
 
-## Getting help
+## Included datasets
 
+```{r, message = FALSE}
+data("hla_database")
+data("hpa_database")
+data("peptide_annotation")
+data("mage_off_targets")
+
+```

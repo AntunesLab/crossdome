@@ -10,14 +10,46 @@ ui <- navbarPage("Crossdome App",
                            selectInput("allele", h3("HLA I allele:"),
                                        choices = hla_valid,
                                        selected = 1),
-                           radioButtons("weights",
-                                              h3("Allele input:"),
+                           radioButtons("protocol",
+                                              h3("Protocol/Mode:"),
                                               choices = list(
-                                                  "Biochemical properties (Default) " = 1,
+                                                  "Biochemical properties" = 1,
                                                   "Structure-derived TCR Weight" = 2
-                                                  #"Predicted TCR Weight" = 3
                                                   ),
-                                              selected = 1),
+                                        selected = 1),
+                           fluidRow(
+                               column(width = 3,
+                                      numericInput("p1", 'P1', value = "3"),
+                               ),
+                               column(width = 3,
+                                      numericInput("p2", 'P1', value = "0.5"),
+                               ),
+                               column(width = 3,
+                                      numericInput("p3", 'P2', value = "0.5"),
+                               ),
+                           ),
+                           fluidRow(
+                             column(width = 3,
+                                    numericInput("p4", 'P4', value = "4"),
+                             ),
+                             column(width = 3,
+                                    numericInput("p5", 'P5', value = "2"),
+                             ),
+                             column(width = 3,
+                                    numericInput("p6", 'P6', value = "0.5"),
+                             )
+                           ),
+                           fluidRow(
+                             column(width = 3,
+                                    numericInput("p7", 'P7', value = "1"),
+                             ),
+                             column(width = 3,
+                                    numericInput("p8", 'P8', value = "1"),
+                             ),
+                             column(width = 3,
+                                    numericInput("p9", 'P9', value = "0.5"),
+                             )
+                           ),
                            actionButton("submit", "Submit", class = "btn-primary"),
                            width = 3
                        ),
@@ -25,7 +57,7 @@ ui <- navbarPage("Crossdome App",
                            textOutput('input_text'),
                            hr(),
                            DT::dataTableOutput('table'),
-                           #downloadButton('download',"Download the data"),
+                           # downloadButton('download',"Download the data"),
                            width = 8
                        )
                     )
@@ -38,19 +70,49 @@ ui <- navbarPage("Crossdome App",
 server <- function(input, output) {
 
     crossdomeParameters <- eventReactive(input$submit, {
-        paste(input$peptide, input$allele, input$weights)
+
+      if(input$protocol == 1) {
+
+        paste(
+          input$peptide,
+          input$allele,
+          "Biochemical properities",
+          sep = " - ")
+
+        } else {
+
+        paste(
+          input$peptide,
+          input$allele,
+          paste0("Structural weights: ",
+                paste0(c(input$p1, input$p2, input$p3, input$p4, input$p5, input$p6, input$p7, input$p8, input$p9), collapse = ", ")),
+          sep = " - ")
+
+      }
+
     })
 
     crossdomeInput <- eventReactive(input$submit, {
+
         if(TRUE) {
+
             position_weight <- list(
                 `1` = rep(1, 9),
-                `2` = c(0.33, 0.31, 0.33, 0.66, 0.21, 0.25, 0.12, 0.18, 0.33)
-                #`3` = rep(1, 9)
+                `2` = c(
+                        input$p1,
+                        input$p2,
+                        input$p3,
+                        input$p4,
+                        input$p5,
+                        input$p6,
+                        input$p7,
+                        input$p8,
+                        input$p9
+                    )
             )
 
-            position_weight <- position_weight[[input$weights]]
-            cross_background <- crossdome::cross_universe(off_targets = NULL, allele = input$allele)
+            position_weight <- position_weight[[input$protocol]]
+            database <- crossdome::cross_universe(off_targets = NULL, allele = input$allele)
 
             cross_result <- data.frame()
 
@@ -58,7 +120,7 @@ server <- function(input, output) {
                 message = "Calculating...", value = 0, {
                     cross_result <- crossdome::cross_compose(
                         query = input$peptide,
-                        object = cross_background,
+                        background = database,
                         position_weight = position_weight
                     )
                 }
@@ -71,7 +133,7 @@ server <- function(input, output) {
     })
 
     output$input_text <- renderText({
-        crossdomeParameters()
+      crossdomeParameters()
     })
 
     output$table <- DT::renderDataTable(
@@ -105,6 +167,7 @@ server <- function(input, output) {
         )
     )
 
+    # To finish
     output$selected <- renderPrint({
         selected <- input$table_rows_selected
         if(selected) {

@@ -5,7 +5,7 @@
 \alias{peptide_annotation}
 \title{Peptide Annotation}
 \format{
-A data frame with XXXX rows and XXXX variables:
+A data frame with 12158833 rows and 3 variables:
 \describe{
 \item{peptide_sequence}{Description}
 \item{ensembl_id}{Description}
@@ -22,13 +22,7 @@ A data frame with XXXX rows and XXXX variables:
 }
 }
 \source{
-\url{http://}
-
-\url{http://}
-
-\url{http://}
-
-\url{http://}
+\url{https://www.proteinatlas.org/}
 }
 \usage{
 peptide_annotation

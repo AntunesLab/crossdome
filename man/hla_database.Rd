@@ -5,7 +5,7 @@
 \alias{hla_database}
 \title{HLA Database}
 \format{
-A data frame with XXXX rows and XXXX variables:
+A data frame with 901893 rows and 9 variables:
 \describe{
 \item{peptide_sequence}{Description}
 \item{hla_allele}{Description}
@@ -13,11 +13,6 @@ A data frame with XXXX rows and XXXX variables:
 \item{resource}{Description}
 \item{n_resource}{Description}
 }
-}
-\source{
-\url{http://}
-
-\url{http://}
 }
 \usage{
 hla_database

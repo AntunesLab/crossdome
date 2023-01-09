@@ -5,7 +5,7 @@
 \alias{mage_off_targets}
 \title{MAGE3A Off-targets (Gee et. al. 2018)}
 \format{
-A data frame with XXXX rows and XXXX variables:
+A data frame with 61 rows and 5 variables:
 \describe{
 \item{peptide_sequence}{Description}
 \item{hla_allele}{Description}
