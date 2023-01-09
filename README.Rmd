@@ -18,7 +18,6 @@ options(tibble.print_min = 5, tibble.print_max = 5)
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/oandrefonseca/crossdome/workflows/R-CMD-check/badge.svg)](https://github.com/oandrefonseca/crossdome/actions)
-[![Coveralls test coverage](https://coveralls.io/repos/github/oandrefonseca/crossdome/badge.svg)](https://coveralls.io/r/oandrefonseca/crossdome?branch=main)
 <!-- badges: end -->
 <br>
 

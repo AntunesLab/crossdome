@@ -6,8 +6,6 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/oandrefonseca/crossdome/workflows/R-CMD-check/badge.svg)](https://github.com/oandrefonseca/crossdome/actions)
-[![Coveralls test
-coverage](https://coveralls.io/repos/github/oandrefonseca/crossdome/badge.svg)](https://coveralls.io/r/oandrefonseca/crossdome?branch=main)
 <!-- badges: end --> <br>
 
 ## Abstract
@@ -25,7 +23,7 @@ aims to rank potential agnostic peptides and measure cross-reactivity
 risk using TCR binding, and MHC presentation probability. Additionally,
 we provide the expression profile related to each CR candidate.
 
-## Description
+## Features
 
 - `cross_universe()` Peptide database spanning eluted candidates
   (experimentally validated) and custom (user-defined).

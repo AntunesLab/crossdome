@@ -24,7 +24,9 @@ Imports:
     magrittr,
     ComplexHeatmap,
     patchwork,
-    universalmotif
+    universalmotif,
+    dplyr,
+    methods
 Suggests: 
     testthat (>= 3.0.0),
     covr,
