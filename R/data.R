@@ -12,6 +12,22 @@
 #' }
 "hla_database"
 
+#' HPA Expression
+#'
+#' Description
+#'
+#' @format A data frame with 20090 rows and 42 variables:
+#' \describe{
+#'   \item{ensembl_id}{Description}
+#'   \item{gene_donor}{Description}
+#'   \item{healthy_tissues}{Description}
+#'   \item{Group}{Description}
+#'   \item{spec_degree}{Description}
+#'   \item{tissues}{Description}
+#' }
+#' @source \url{https://www.proteinatlas.org/}
+"hpa_database"
+
 #' MAGE3A Off-targets (Gee et. al. 2018)
 #'
 #' Description
@@ -26,6 +42,7 @@
 #'   \item{n_resource}{Description}
 #' }
 #' @source \url{https://www.biorxiv.org/content/10.1101/472480v1.full}
+#' @source \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6002776/}
 "mage_off_targets"
 
 #' Peptide Annotation
@@ -37,20 +54,5 @@
 #'   \item{peptide_sequence}{Description}
 #'   \item{ensembl_id}{Description}
 #'   \item{gene_donor}{Description}
-#'   \item{n_gene}{Description}
 #' }
-"peptide_annotation"
-
-#' Peptide Annotation
-#'
-#' Description
-#'
-#' @format A data frame with XXXX rows and XXXX variables:
-#' \describe{
-#'   \item{peptide_sequence}{Description}
-#'   \item{ensembl_id}{Description}
-#'   \item{gene_donor}{Description}
-#'   \item{n_gene}{Description}
-#' }
-#' @source \url{https://www.proteinatlas.org/}
 "peptide_annotation"

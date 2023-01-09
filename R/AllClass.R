@@ -4,8 +4,9 @@
 #' @name xrBackground-class
 #' @docType class
 #'
-#' @slot peptides Description
 #' @slot allele Description
+#' @slot peptides Description
+#' @slot stats A slot containing statistics
 #'
 #' @exportClass xrBackground
 #' @keywords classes
@@ -30,9 +31,13 @@ setClass("xrBackground",
 #' @name xrResult-class
 #' @docType class
 #'
-#' @slot result Description
-#' @slot allele Allele
-#' @slot position_weight numeric
+#' @slot query A peptide target. Only 9-mers are supported.
+#' @slot result Crossdome ranking data.frame
+#' @slot allele Input a MHC Class I allele
+#' @slot expression Expression data slot
+#' @slot analysis Sequence and immunogenicity slot
+#' @slot position_weight A numeric vector derived from TCR hotspots
+#' @slot timestamp Execution timestamp
 #'
 #' @exportClass xrResult
 #' @keywords classes

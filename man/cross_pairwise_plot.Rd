@@ -12,7 +12,7 @@ cross_pairwise_plot(query, subject)
 \item{subject}{Putative off-target candidate. Only 9-mers are supported.}
 }
 \value{
-Returns a \code{corrplot} object
+Returns a \strong{corrplot} object
 }
 \description{
 Plot a Correlation plot based on two biochemical profiles

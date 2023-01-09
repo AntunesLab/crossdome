@@ -6,9 +6,6 @@
 \usage{
 cross_browser()
 }
-\value{
-
-}
 \description{
 Opens an interactive shiny application
 }

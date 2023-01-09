@@ -6,7 +6,7 @@
 #' @param query Peptide target. Only 9-mers are supported.
 #' @param subject Putative off-target candidate. Only 9-mers are supported.
 #'
-#' @return Returns a `corrplot` object
+#' @return Returns a \strong{corrplot} object
 #'
 #' @import corrplot
 #' @importFrom corrplot corrplot
@@ -44,7 +44,7 @@ cross_pairwise_plot <- function(query, subject) {
 #'
 #' @param object Depends on xrResult object. Run \code{\link{cross_compose}} function.
 #'
-#' @return Returns a combined `ComplexHeatmap` object
+#' @return Returns a combined \strong{ComplexHeatmap} object
 #'
 #' @importFrom ComplexHeatmap pheatmap rowAnnotation anno_text anno_barplot draw
 #' @importFrom grid gpar unit
@@ -112,6 +112,7 @@ setMethod('cross_expression_plot', signature(object = "xrResult"),
 #' @import patchwork
 #' @importFrom universalmotif create_motif view_motifs
 #' @importFrom Biostrings AAStringSet
+#' @importFrom stats reorder setNames
 #'
 #' @exportMethod cross_substitution_plot
 #'
@@ -190,9 +191,8 @@ setMethod('cross_substitution_plot', signature(object = "xrResult"),
 #' @return Returns a ggplot object
 #'
 #' @import ggplot2
-#' @import patchwork
-#' @importFrom universalmotif create_motif view_motifs
-#' @importFrom Biostrings AAStringSet
+#' @importFrom stats aggregate reorder
+#' @importFrom methods slotNames
 #'
 #' @exportMethod cross_prediction_plot
 #'

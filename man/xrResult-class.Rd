@@ -10,11 +10,19 @@ The Crossdome main object
 \section{Slots}{
 
 \describe{
-\item{\code{result}}{Description}
+\item{\code{query}}{A peptide target. Only 9-mers are supported.}
 
-\item{\code{allele}}{Allele}
+\item{\code{result}}{Crossdome ranking data.frame}
 
-\item{\code{position_weight}}{numeric}
+\item{\code{allele}}{Input a MHC Class I allele}
+
+\item{\code{expression}}{Expression data slot}
+
+\item{\code{analysis}}{Sequence and immunogenicity slot}
+
+\item{\code{position_weight}}{A numeric vector derived from TCR hotspots}
+
+\item{\code{timestamp}}{Execution timestamp}
 }}
 
 \keyword{classes}

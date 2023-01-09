@@ -12,7 +12,7 @@ cross_expression_plot(object)
 \item{object}{Depends on xrResult object. Run \code{\link{cross_compose}} function.}
 }
 \value{
-Returns a combined \code{ComplexHeatmap} object
+Returns a combined \strong{ComplexHeatmap} object
 }
 \description{
 Plot a heatmap presenting the gene donor expression profile

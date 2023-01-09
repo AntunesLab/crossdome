@@ -16,6 +16,8 @@ A data frame with 61 rows and 5 variables:
 }
 \source{
 \url{https://www.biorxiv.org/content/10.1101/472480v1.full}
+
+\url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6002776/}
 }
 \usage{
 mage_off_targets

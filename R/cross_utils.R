@@ -85,6 +85,8 @@ cross_universe <- function(off_targets = NULL, allele) {
 #'
 #' @return Return a matrix containing mRNA expression across healthy tissues
 #'
+#' @importFrom utils head
+#'
 #' @exportMethod cross_expression_matrix
 #'
 #' @examples
@@ -149,12 +151,11 @@ setMethod(
 #' @param rank A numeric value to filter number of candidates
 #' @param pvalue_threshold P-value threshold
 #'
-#' @return Returns a `matrix` with amino acid substitution probabilies
+#' @return Returns a \code{matrix} with amino acid substitution probabilies
 #'
-#' @import ggplot2
-#' @import patchwork
 #' @importFrom universalmotif create_motif view_motifs
 #' @importFrom Biostrings AAStringSet
+#' @importFrom utils head
 #'
 #' @exportMethod cross_substitution_matrix
 #'
@@ -197,11 +198,11 @@ setMethod('cross_substitution_matrix', signature(object = "xrResult"),
 #'
 #' @description Opens an interactive shiny application
 #'
-#' @return
 #'
 #' @importFrom DT dataTableOutput
 #' @importFrom DT renderDataTable
 #' @importFrom shiny runApp
+#'
 #' @export
 #' @examples
 #' \dontrun{
@@ -240,7 +241,7 @@ setMethod('show', signature(object = 'xrResult'),
 #'
 #' @description Export Crossdome object to a tsv file
 #'
-#' @param object Depends on xrResult object. Run `cross_compose` function.
+#' @param object Depends on xrResult object. Run \code{\link{cross_compose}} function.
 #' @param file File or connection to write to.
 #'
 #' @exportMethod show

@@ -22,7 +22,7 @@ cross_write(object, ...)
 )
 }
 \arguments{
-\item{object}{Depends on xrResult object. Run \code{cross_compose} function.}
+\item{object}{Depends on xrResult object. Run \code{\link{cross_compose}} function.}
 
 \item{file}{File or connection to write to.}
 }

@@ -10,9 +10,11 @@ An object holding data from \code{\link{hla_database}}
 \section{Slots}{
 
 \describe{
+\item{\code{allele}}{Description}
+
 \item{\code{peptides}}{Description}
 
-\item{\code{allele}}{Description}
+\item{\code{stats}}{A slot containing statistics}
 }}
 
 \keyword{classes}
