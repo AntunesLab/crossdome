@@ -62,7 +62,7 @@ ui <- navbarPage("Crossdome App",
                        )
                     )
                 ),
-                tabPanel("Analyze", verbatimTextOutput('selected')),
+                tabPanel("Analysis", includeHTML("analysis.html")),
                 tabPanel("Help", includeHTML("help.html")),
                 tabPanel("About", includeHTML("about.html"))
 )

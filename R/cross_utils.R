@@ -218,7 +218,7 @@ setMethod('cross_substitution_matrix', signature(object = "xrResult"),
 cross_browser <- function() {
   app_directory <- system.file("cross_browser", package = "crossdome")
   if (app_directory == "") {
-    stop("Could not find example directory. Try re-installing `crossdome`.", call. = FALSE)
+    stop("Could not find example directory. Try re-installing **crossdome**.", call. = FALSE)
   }
   shiny::runApp(app_directory, display.mode = "normal")
 }

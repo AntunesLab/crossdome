@@ -17,11 +17,11 @@ options(tibble.print_min = 5, tibble.print_max = 5)
 # Crossdome <a href=''><img src="man/figures/logo.png" align="right" height="250px"/></a>
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/oandrefonseca/crossdome/workflows/R-CMD-check/badge.svg)](https://github.com/oandrefonseca/crossdome/actions)
 [![R-CMD-check](https://github.com/oandrefonseca/crossdome/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/oandrefonseca/crossdome/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/oandrefonseca/crossdome/branch/main/graph/badge.svg)](https://app.codecov.io/gh/oandrefonseca/crossdome?branch=main)
 <!-- badges: end -->
 
-**Developed by:** [André Fonseca](oandrefonseca@gmail.com)
+**Developed by:** [André Fonseca, PhD](oandrefonseca@gmail.com)
 
 <br>
 <br>
@@ -74,9 +74,9 @@ Currently, several clinical protocols are leveraging on distinct immune mechanis
 
 ## Included datasets
 
-- **`hla_database`** Immunopeptidomics spanning several MHC Class I alleles. Includes binding affinity, and immunogenicity score from MHC Flurry and DeepImmuno, respectively.
-- **`hpa_database`** Expression database derived from Human Protein Atlas.
-- **`peptide_annotation`** Database for mapping peptides to gene-donors derived from NCBI RefSeq Protein **[UNDER CONSTRUCTION]**. 
+- **`hla_database`** Immunopeptidomics spanning several MHC Class I alleles. Includes binding affinity, and immunogenicity score from [MHC Flurry](https://www.sciencedirect.com/science/article/pii/S2405471220302398) and [DeepImmuno](https://academic.oup.com/bib/article/22/6/bbab160/6261914), respectively.
+- **`hpa_database`** Expression database derived from [Human Protein Atlas](https://www.proteinatlas.org/).
+- **`peptide_annotation`** Database for mapping peptides to gene-donors derived from [NCBI RefSeq Protein](https://www.ncbi.nlm.nih.gov/refseq/) **[UNDER CONSTRUCTION]**. 
 - **`mage_off_targets`** Curated off-targets related to MAGEA3-specific TCR. 
 
 To inspect the data sets use: `data(DATA_NAME)`

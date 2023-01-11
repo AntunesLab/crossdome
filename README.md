@@ -5,11 +5,12 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/oandrefonseca/crossdome/workflows/R-CMD-check/badge.svg)](https://github.com/oandrefonseca/crossdome/actions)
 [![R-CMD-check](https://github.com/oandrefonseca/crossdome/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/oandrefonseca/crossdome/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/oandrefonseca/crossdome/branch/main/graph/badge.svg)](https://app.codecov.io/gh/oandrefonseca/crossdome?branch=main)
 <!-- badges: end -->
 
-**Developed by:** [André Fonseca](oandrefonseca@gmail.com)
+**Developed by:** [André Fonseca, PhD](oandrefonseca@gmail.com)
 
 <br> <br>
 
@@ -90,12 +91,17 @@ predictions for each potential off-target.
 ## Included datasets
 
 - **`hla_database`** Immunopeptidomics spanning several MHC Class I
-  alleles. Includes binding affinity, and immunogenicity score from MHC
-  Flurry and DeepImmuno, respectively.
-- **`hpa_database`** Expression database derived from Human Protein
-  Atlas.
+  alleles. Includes binding affinity, and immunogenicity score from [MHC
+  Flurry](https://www.sciencedirect.com/science/article/pii/S2405471220302398)
+  and
+  [DeepImmuno](https://academic.oup.com/bib/article/22/6/bbab160/6261914),
+  respectively.
+- **`hpa_database`** Expression database derived from [Human Protein
+  Atlas](https://www.proteinatlas.org/).
 - **`peptide_annotation`** Database for mapping peptides to gene-donors
-  derived from NCBI RefSeq Protein **\[UNDER CONSTRUCTION\]**.
+  derived from [NCBI RefSeq
+  Protein](https://www.ncbi.nlm.nih.gov/refseq/) **\[UNDER
+  CONSTRUCTION\]**.
 - **`mage_off_targets`** Curated off-targets related to MAGEA3-specific
   TCR.
 
@@ -109,7 +115,7 @@ library(crossdome)
 
 database <- cross_background(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
 result <- cross_compose(query = 'EVDPIGHLY', background = database)
-#> ##------ Wed Jan 11 15:02:10 2023 ------##
+#> ##------ Wed Jan 11 15:36:30 2023 ------##
 ```
 
 <table>
@@ -945,5 +951,5 @@ str(result)
 #>   ..@ expression     : list()
 #>   ..@ analysis       : list()
 #>   ..@ position_weight: num [1:9] 1 1 1 1 1 1 1 1 1
-#>   ..@ timestamp      : chr "##------ Wed Jan 11 15:02:10 2023 ------##"
+#>   ..@ timestamp      : chr "##------ Wed Jan 11 15:36:30 2023 ------##"
 ```

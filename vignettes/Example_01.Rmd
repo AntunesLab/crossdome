@@ -41,11 +41,9 @@ cross_expression_plot(object = result)
 
 ```{r}
 
-if(FALSE) {
-  
-  cross_tissue_plot(object = result)
-  
-}
+cross_tissues_plot(object = result)
+
+
 ```
 
 ```{r fig.height = 10, fig.width = 6, paged.print = TRUE}
@@ -64,4 +62,3 @@ if(FALSE) {
 }
 
 ```
-
