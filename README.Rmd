@@ -14,12 +14,6 @@ knitr::opts_chunk$set(
 options(tibble.print_min = 5, tibble.print_max = 5)
 ```
 
-<style>
-  body {
-    text-align: justify
-  }
-</style>
-
 # Crossdome <a href=''><img src="man/figures/logo.png" align="right" height="250px"/></a>
 
 <!-- badges: start -->
@@ -44,11 +38,15 @@ devtools::install_github("antuneslab/crossdome")
 
 **Crossdome: An R package to measure cross-reactivity risk on the sequence-space**
 
+<p align="justify">  
 Currently, several clinical protocols are leveraging on distinct immune mechanisms, such as adoptive T-cell therapy and peptide-based vaccines. However, multiple factors can impact the accuracy of these immune-based applications, such as expression heterogeneity, immunogenicity, and cross-reactivity (CR) risk. Crossdome was created to measure cross-reactivity potential based on biochemical properties. Our approach aims to rank potential CR candidates and measure cross-reactivity risk using mRNA expression, immunogenicity score (TCR binding), and MHC presentation probability. Additionally, we provide the expression profile related to each CR candidate.
+</p>
 
 <a href=''><img src="man/figures/workflow.png" align="center"/></a>
 
+<p align="justify">  
 **Figure 1. Crossdome workflow and strategy.** Crossdome summarises biochemical properties per amino acid into 12 principal components. In turn, the principal components are used to convert peptide sequences into biochemical profiles (matrices). Next, given a target peptide, Crossdome screens an immunopeptidomics dataset for a similar biochemical profiler, i.e., CR candidates. A relatedness score between the target and candidate off-targets is calculated based on linear distance. Finally, Crossdome incorporates expression levels and immunogenicity predictions for each potential off-target.
+</p>
 
 ## Functions and Features
 
