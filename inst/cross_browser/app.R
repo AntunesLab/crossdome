@@ -112,7 +112,7 @@ server <- function(input, output) {
             )
 
             position_weight <- position_weight[[input$protocol]]
-            database <- crossdome::cross_universe(off_targets = NULL, allele = input$allele)
+            database <- crossdome::cross_background(off_targets = NULL, allele = input$allele)
 
             cross_result <- data.frame()
 
