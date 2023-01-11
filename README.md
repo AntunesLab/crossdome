@@ -1,10 +1,5 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<style>
-  body {
-    text-align: justify
-  }
-</style>
 
 # Crossdome <a href=''><img src="man/figures/logo.png" align="right" height="250px"/></a>
 
@@ -30,6 +25,7 @@ devtools::install_github("antuneslab/crossdome")
 **Crossdome: An R package to measure cross-reactivity risk on the
 sequence-space**
 
+<p align="justify">
 Currently, several clinical protocols are leveraging on distinct immune
 mechanisms, such as adoptive T-cell therapy and peptide-based vaccines.
 However, multiple factors can impact the accuracy of these immune-based
@@ -40,9 +36,11 @@ aims to rank potential CR candidates and measure cross-reactivity risk
 using mRNA expression, immunogenicity score (TCR binding), and MHC
 presentation probability. Additionally, we provide the expression
 profile related to each CR candidate.
+</p>
 
 <a href=''><img src="man/figures/workflow.png" align="center"/></a>
 
+<p align="justify">
 **Figure 1. Crossdome workflow and strategy.** Crossdome summarises
 biochemical properties per amino acid into 12 principal components. In
 turn, the principal components are used to convert peptide sequences
@@ -52,6 +50,7 @@ profiler, i.e., CR candidates. A relatedness score between the target
 and candidate off-targets is calculated based on linear distance.
 Finally, Crossdome incorporates expression levels and immunogenicity
 predictions for each potential off-target.
+</p>
 
 ## Functions and Features
 
@@ -110,7 +109,7 @@ library(crossdome)
 
 database <- cross_background(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
 result <- cross_compose(query = 'EVDPIGHLY', background = database)
-#> ##------ Wed Jan 11 14:54:14 2023 ------##
+#> ##------ Wed Jan 11 15:01:20 2023 ------##
 ```
 
 <table>
@@ -946,5 +945,5 @@ str(result)
 #>   ..@ expression     : list()
 #>   ..@ analysis       : list()
 #>   ..@ position_weight: num [1:9] 1 1 1 1 1 1 1 1 1
-#>   ..@ timestamp      : chr "##------ Wed Jan 11 14:54:14 2023 ------##"
+#>   ..@ timestamp      : chr "##------ Wed Jan 11 15:01:20 2023 ------##"
 ```
