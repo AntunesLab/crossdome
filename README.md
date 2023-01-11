@@ -41,7 +41,7 @@ profile related to each CR candidate.
 <a href=''><img src="man/figures/workflow.png" align="center"/></a>
 
 <p align="justify">
-**Figure 1. Crossdome workflow and strategy.** Crossdome summarises
+<b>Figure 1. Crossdome workflow and strategy.</b>Crossdome summarises
 biochemical properties per amino acid into 12 principal components. In
 turn, the principal components are used to convert peptide sequences
 into biochemical profiles (matrices). Next, given a target peptide,
@@ -109,7 +109,7 @@ library(crossdome)
 
 database <- cross_background(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
 result <- cross_compose(query = 'EVDPIGHLY', background = database)
-#> ##------ Wed Jan 11 15:01:20 2023 ------##
+#> ##------ Wed Jan 11 15:02:10 2023 ------##
 ```
 
 <table>
@@ -945,5 +945,5 @@ str(result)
 #>   ..@ expression     : list()
 #>   ..@ analysis       : list()
 #>   ..@ position_weight: num [1:9] 1 1 1 1 1 1 1 1 1
-#>   ..@ timestamp      : chr "##------ Wed Jan 11 15:01:20 2023 ------##"
+#>   ..@ timestamp      : chr "##------ Wed Jan 11 15:02:10 2023 ------##"
 ```
