@@ -15,11 +15,8 @@ badge](https://img.shields.io/badge/Version-Beta-Orange.svg)]()
 
 <!-- badges: end -->
 
-<i class="fa-duotone fa-mailbox"></i> **Developed by:** André Fonseca,
-PhD \|
-<a href="mailto:oandrefonseca@gmail.com"><i class="fa-duotone fa-paper-plane"></i></a>
-\|
-<a href="https://www.linkedin.com/in/oandrefonseca/"><i class="fa-duotone fa-paper-plane"></i></a>
+**Developed by:** André Fonseca, PhD
+<a href='mailto:oandrefonseca@gmail.com'><img src="man/figures/gmail.png" height="15px"/></a>
 
 <br> <br>
 
@@ -124,7 +121,7 @@ library(crossdome)
 
 database <- cross_background(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
 result <- cross_compose(query = 'EVDPIGHLY', background = database)
-#> ##------ Wed Jan 11 16:33:23 2023 ------##
+#> ##------ Wed Jan 11 16:55:54 2023 ------##
 ```
 
 <table>
@@ -960,5 +957,5 @@ str(result)
 #>   ..@ expression     : list()
 #>   ..@ analysis       : list()
 #>   ..@ position_weight: num [1:9] 1 1 1 1 1 1 1 1 1
-#>   ..@ timestamp      : chr "##------ Wed Jan 11 16:33:23 2023 ------##"
+#>   ..@ timestamp      : chr "##------ Wed Jan 11 16:55:54 2023 ------##"
 ```

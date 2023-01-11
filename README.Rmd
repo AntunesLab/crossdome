@@ -26,14 +26,7 @@ options(tibble.print_min = 5, tibble.print_max = 5)
 
 <!-- badges: end -->
 
-```{html echo = FALSE}
-
-<script src="https://kit.fontawesome.com/2b46ea512d.js" crossorigin="anonymous"></script>
-
-```
-
-**Developed by:** André Fonseca, PhD | <a href="mailto:oandrefonseca@gmail.com"><i class="fa-duotone fa-paper-plane"></i></a> | <a href="https://www.linkedin.com/in/oandrefonseca/"><i class="fa-duotone fa-paper-plane"></i></a>  
-
+**Developed by:** André Fonseca, PhD <a href='mailto:oandrefonseca@gmail.com'><img src="man/figures/gmail.png" height="15px"/></a>
 
 <br>
 <br>
