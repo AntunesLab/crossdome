@@ -16,7 +16,7 @@ options(tibble.print_min = 5, tibble.print_max = 5)
 
 ```
 
-# Crossdome <a href=''><img src="man/figures/logo.png" align="right" height="250px"/></a>
+# Crossdome (Beta) <a href=''><img src="man/figures/logo.png" align="right" height="250px"/></a>
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/oandrefonseca/crossdome/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/oandrefonseca/crossdome/actions/workflows/R-CMD-check.yaml)

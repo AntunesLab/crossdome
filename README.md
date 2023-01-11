@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Crossdome <a href=''><img src="man/figures/logo.png" align="right" height="250px"/></a>
+# Crossdome (Beta) <a href=''><img src="man/figures/logo.png" align="right" height="250px"/></a>
 
 <!-- badges: start -->
 
@@ -121,7 +121,7 @@ library(crossdome)
 
 database <- cross_background(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
 result <- cross_compose(query = 'EVDPIGHLY', background = database)
-#> ##------ Wed Jan 11 16:57:02 2023 ------##
+#> ##------ Wed Jan 11 17:17:24 2023 ------##
 ```
 
 <table>
@@ -957,5 +957,5 @@ str(result)
 #>   ..@ expression     : list()
 #>   ..@ analysis       : list()
 #>   ..@ position_weight: num [1:9] 1 1 1 1 1 1 1 1 1
-#>   ..@ timestamp      : chr "##------ Wed Jan 11 16:57:02 2023 ------##"
+#>   ..@ timestamp      : chr "##------ Wed Jan 11 17:17:24 2023 ------##"
 ```
