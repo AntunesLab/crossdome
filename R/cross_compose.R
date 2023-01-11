@@ -4,7 +4,7 @@
 #' @description Predicts relatedness among peptides in a given database. Low values are associated with cross-reactive candidates.
 #'
 #' @param query A peptide target. Only 9-mers are supported.
-#' @param background Background object create with \code{\link{cross_universe}}
+#' @param background Background object create with \code{\link{cross_background}}
 #' @param position_weight A numeric vector derived from TCR hotspots
 #'
 #' @return Returns a \code{\link{xrResult}} object containing relatedness ranking
@@ -16,7 +16,7 @@
 #' data('mage_off_targets')
 #'
 #' mage_off_targets <- mage_off_targets$peptide_sequence
-#' background <- cross_universe(off_targets = mage_off_targets, allele = "HLA-A*01:01")
+#' background <- cross_background(off_targets = mage_off_targets, allele = "HLA-A*01:01")
 #' result <- cross_compose(query = query, background = background
 #'
 #' }
@@ -43,10 +43,10 @@ setMethod(
 
     result <- result[order(result$relatedness_score, decreasing = F), ]
     result$percentile_rank <- .internal_percentile_rank(result$relatedness_score)
-    result$index <- 1:nrow(result)
+    result$rank <- 1:nrow(result)
 
     result <- result[,
-          c('index', 'query', 'subject', 'n_positive', 'n_mismatch', 'relatedness_score',
+          c('rank', 'query', 'subject', 'n_positive', 'n_mismatch', 'relatedness_score',
             'zscore', 'pvalue', 'hla_allele', 'percentile_rank')]
 
     result <- new('xrResult',

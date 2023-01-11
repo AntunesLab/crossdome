@@ -27,5 +27,5 @@ cross_write(object, ...)
 \item{file}{File or connection to write to.}
 }
 \description{
-Export Crossdome object to a tsv file
+Export Crossdome object to a tsv file.
 }

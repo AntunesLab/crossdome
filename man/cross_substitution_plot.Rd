@@ -15,7 +15,7 @@ cross_substitution_plot(object)
 Returns a heatmap-like figure showing substitution rate
 }
 \description{
-Plot a heatmap combined with seqlogo displaying amino acid substitutions
+A heatmap combined with seqlogo displaying amino acid substitutions.
 }
 \examples{
 \dontrun{

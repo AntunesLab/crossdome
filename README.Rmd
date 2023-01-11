@@ -8,42 +8,80 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
+  fig.path = "man/figures/",
   out.width = "100%"
 )
 options(tibble.print_min = 5, tibble.print_max = 5)
 ```
 
-# Crossdome <a href=''><img src="man/figures/logo.png" align="right" height="139"/></a>
+<style>
+  body {
+    text-align: justify
+  }
+</style>
+
+# Crossdome <a href=''><img src="man/figures/logo.png" align="right" height="250px"/></a>
 
 <!-- badges: start -->
-
 [![R-CMD-check](https://github.com/oandrefonseca/crossdome/workflows/R-CMD-check/badge.svg)](https://github.com/oandrefonseca/crossdome/actions)
-
+[![R-CMD-check](https://github.com/oandrefonseca/crossdome/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/oandrefonseca/crossdome/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
+**Developed by:** [André Fonseca](oandrefonseca@gmail.com)
+
 <br>
-
-## Abstract
-
-**Crossdome: An R package to measure cross-reactivity risk on the sequence-space**
-
-Currently, several clinical protocols are leveraging on distinct immune mechanisms, such as adoptive T-cell therapy and peptide-based vaccines. However, multiple factors can impact the accuracy of these immune-based applications, such as expression heterogeneity, immunogenicity, and cross-reactivity (CR) risk. Crossdome was created to measure cross-reactivity potential based on biochemical properties. Our approach aims to rank potential agnostic peptides and measure cross-reactivity risk using TCR binding, and MHC presentation probability. Additionally, we provide the expression profile related to each CR candidate.
-
-## Features
-
--   `cross_universe()` Peptide database spanning eluted candidates (experimentally validated) and custom (user-defined).
--   `cross_pair_summary()` Calculates relatedness score between peptides
--   `cross_compose()` Predicts relatedness among peptides in a given database. Low values are associated with cross-reactive candidates.
--   `cross_browser()` Opens an interactive shiny application
+<br>
 
 ## Installation
 
 ```{r, eval = FALSE}
 
-devtools::install_github("oandrefonseca/crossdome")
+devtools::install_github("antuneslab/crossdome")
 
 ```
+
+## Abstract
+
+**Crossdome: An R package to measure cross-reactivity risk on the sequence-space**
+
+Currently, several clinical protocols are leveraging on distinct immune mechanisms, such as adoptive T-cell therapy and peptide-based vaccines. However, multiple factors can impact the accuracy of these immune-based applications, such as expression heterogeneity, immunogenicity, and cross-reactivity (CR) risk. Crossdome was created to measure cross-reactivity potential based on biochemical properties. Our approach aims to rank potential CR candidates and measure cross-reactivity risk using mRNA expression, immunogenicity score (TCR binding), and MHC presentation probability. Additionally, we provide the expression profile related to each CR candidate.
+
+<a href=''><img src="man/figures/workflow.png" align="center"/></a>
+
+**Figure 1. Crossdome workflow and strategy.** Crossdome summarises biochemical properties per amino acid into 12 principal components. In turn, the principal components are used to convert peptide sequences into biochemical profiles (matrices). Next, given a target peptide, Crossdome screens an immunopeptidomics dataset for a similar biochemical profiler, i.e., CR candidates. A relatedness score between the target and candidate off-targets is calculated based on linear distance. Finally, Crossdome incorporates expression levels and immunogenicity predictions for each potential off-target.
+
+## Functions and Features
+
+#### Prediction
+
+- **`cross_background`** Peptide database spanning eluted candidates (experimentally validated) and custom (user-defined).
+- **`cross_pair_summary`** Calculates relatedness score between peptides.
+- **`cross_compose`** Predicts relatedness among peptides in a given database. Low values are associated with cross-reactive candidates.
+- **`cross_browser`** Opens an interactive shiny application.
+
+#### Analysis
+
+- **`cross_expression_matrix`**  Extracts gene donor mRNA expression based on CR candidates.
+- **`cross_substitution_matrix`**  Calculates position-specific substitution across cross-reactive candidates.
+- **`cross_peptide_properties`**  Converts a peptide to biochemical profile.
+- **`cross_write`**  Exports Crossdome result slot for a tsv file.
+
+#### Visualization
+
+- **`cross_expression_plot`**  A heatmap presenting the gene donor expression profile.
+- **`cross_tissues_plot`**  A bar plot summarizing the tissue-specificy groups.
+- **`cross_prediction_plot`**  Plot a dot plot showing the immunogenic predictions **[UNDER CONSTRUCTION]**.
+- **`cross_pairwise_plot`**  Correlation plot based on two peptide / biochemical profiles **[UNDER CONSTRUCTION]**.
+- **`cross_substitution_plot`**  A heatmap combined with seqlogo displaying amino acid substitutions.
+
+## Included datasets
+
+- **`hla_database`** Immunopeptidomics spanning several MHC Class I alleles. Includes binding affinity, and immunogenicity score from MHC Flurry and DeepImmuno, respectively.
+- **`hpa_database`** Expression database derived from Human Protein Atlas.
+- **`peptide_annotation`** Database for mapping peptides to gene-donors derived from NCBI RefSeq Protein **[UNDER CONSTRUCTION]**. 
+- **`mage_off_targets`** Curated off-targets related to MAGEA3-specific TCR. 
+
+To inspect the data sets use: `data(DATA_NAME)`
 
 ## Basic Usage
 
@@ -51,18 +89,33 @@ devtools::install_github("oandrefonseca/crossdome")
 
 library(crossdome)
 
-database <- cross_universe(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
+database <- cross_background(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
 result <- cross_compose(query = 'EVDPIGHLY', background = database)
-str(result)
 
 ```
 
-## Included datasets
+```{r message = FALSE, echo = FALSE}
 
-```{r, message = FALSE}
-data("hla_database")
-data("hpa_database")
-data("peptide_annotation")
-data("mage_off_targets")
+library(knitr)
+library(kableExtra)
+library(dplyr)
+
+to_display_columns <- c('rank', 'query', 'subject',	'n_positive',	'n_mismatch',	'relatedness_score', 'pvalue', 'hla_allele')
+to_display_data <- result@result[1:30, to_display_columns] %>%
+  mutate(
+    relatedness_score = round(relatedness_score, 2),
+    hla_allele = sub('\\*', '', hla_allele)
+  )
+
+kable(
+  to_display_data, 
+  row.names = FALSE
+)
+
+```
+
+```{r}
+
+str(result)
 
 ```

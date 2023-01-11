@@ -15,7 +15,7 @@ cross_expression_plot(object)
 Returns a combined \strong{ComplexHeatmap} object
 }
 \description{
-Plot a heatmap presenting the gene donor expression profile
+A heatmap presenting the gene donor expression profile.
 }
 \examples{
 \dontrun{

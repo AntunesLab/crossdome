@@ -34,11 +34,11 @@ setGeneric('cross_substitution_plot', function(object) {
   standardGeneric("cross_substitution_plot")
 })
 
-#' @name cross_enrichment_plot
+#' @name cross_tissues_plot
 #' @title Tissue-specificity barplot
 #' @export
-setGeneric('cross_enrichment_plot', function(object) {
-  standardGeneric("cross_enrichment_plot")
+setGeneric('cross_tissues_plot', function(object) {
+  standardGeneric("cross_tissues_plot")
 })
 
 #' @name cross_prediction_plot

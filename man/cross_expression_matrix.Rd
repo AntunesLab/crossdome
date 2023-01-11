@@ -15,10 +15,10 @@
 \item{pvalue_threshold}{P-value threshold}
 }
 \value{
-Return a matrix containing mRNA expression across healthy tissues
+Return a matrix containing mRNA expression across healthy tissues.
 }
 \description{
-Collecting gene-donor expression data
+Extracts gene donor mRNA expression based on CR candidates.
 }
 \examples{
 \dontrun{

@@ -16,10 +16,10 @@ cross_substitution_matrix(object, ...)
 \item{pvalue_threshold}{P-value threshold}
 }
 \value{
-Returns a \code{matrix} with amino acid substitution probabilies
+Returns a \code{matrix} with amino acid substitution probabilies.
 }
 \description{
-Calculates position-specific substitution across cross-reactive candidates
+Calculates position-specific substitution across cross-reactive candidates.
 }
 \examples{
 \dontrun{

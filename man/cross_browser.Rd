@@ -7,7 +7,7 @@
 cross_browser()
 }
 \description{
-Opens an interactive shiny application
+Opens an interactive shiny application.
 }
 \examples{
 \dontrun{

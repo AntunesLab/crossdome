@@ -15,7 +15,7 @@ cross_pairwise_plot(query, subject)
 Returns a \strong{corrplot} object
 }
 \description{
-Plot a Correlation plot based on two biochemical profiles
+Correlation plot based on two peptide / biochemical profiles.
 }
 \examples{
 query <- 'EVDPIGHLY'

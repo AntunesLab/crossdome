@@ -12,7 +12,7 @@ cross_compose(query, background, position_weight = rep(1, 9))
 \arguments{
 \item{query}{A peptide target. Only 9-mers are supported.}
 
-\item{background}{Background object create with \code{\link{cross_universe}}}
+\item{background}{Background object create with \code{\link{cross_background}}}
 
 \item{position_weight}{A numeric vector derived from TCR hotspots}
 }
@@ -27,7 +27,7 @@ Predicts relatedness among peptides in a given database. Low values are associat
 data('mage_off_targets')
 
 mage_off_targets <- mage_off_targets$peptide_sequence
-background <- cross_universe(off_targets = mage_off_targets, allele = "HLA-A*01:01")
+background <- cross_background(off_targets = mage_off_targets, allele = "HLA-A*01:01")
 result <- cross_compose(query = query, background = background
 
 }

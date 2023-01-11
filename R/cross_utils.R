@@ -1,19 +1,19 @@
-#' @name cross_epitope_properties
-#' @title Converting peptide to biochemical properties
+#' @name cross_peptide_properties
+#' @title Converts a peptide to biochemical profile
 #'
 #' @param query A peptide target. Only 9-mers are supported.
 #'
-#' @return Returns a matrix related to the biochemical profile
+#' @return Returns a matrix related to the biochemical profile.
 #' @export
 #'
 #' @examples
-#' cross_epitope_properties('EVDPIGHLY')
+#' cross_peptide_properties('EVDPIGHLY')
 
-cross_epitope_properties <- function(query) {
+cross_peptide_properties <- function(query) {
   return(.internal_peptide_to_matrix(query))
 }
 
-#' @name cross_universe
+#' @name cross_background
 #' @title Creating immunopeptidomics database
 #'
 #' @description Peptide database spanning eluted candidates (experimentally validated) and custom (user-defined).
@@ -31,17 +31,17 @@ cross_epitope_properties <- function(query) {
 #' View(hla_database)
 #'
 #' # Using default immunopeptidomics
-#' background <- cross_universe(allele = 'HLA-A*01:01')
+#' background <- cross_background(allele = 'HLA-A*01:01')
 #'
 #' # Using MAGE3A off-targets
 #' data('mage_off_targets')
 #'
 #' mage_off_targets <- mage_off_targets$peptide_sequence
-#' background <- cross_universe(off_targets = mage_off_targets, allele = "HLA-A*01:01")
+#' background <- cross_background(off_targets = mage_off_targets, allele = "HLA-A*01:01")
 #'
 #'}
 
-cross_universe <- function(off_targets = NULL, allele) {
+cross_background <- function(off_targets = NULL, allele) {
 
   hla_database <- crossdome::hla_database
   allele_list <- unique(hla_database$hla_allele)
@@ -79,11 +79,13 @@ cross_universe <- function(off_targets = NULL, allele) {
 #' @name cross_expression_matrix
 #' @docType methods
 #'
+#' @description Extracts gene donor mRNA expression based on CR candidates.
+#'
 #' @param object Depends on xrResult object. Run \code{\link{cross_compose}} function.
 #' @param rank A numeric value to filter number of candidates
 #' @param pvalue_threshold P-value threshold
 #'
-#' @return Return a matrix containing mRNA expression across healthy tissues
+#' @return Return a matrix containing mRNA expression across healthy tissues.
 #'
 #' @importFrom utils head
 #'
@@ -145,13 +147,13 @@ setMethod(
 
 #' @name cross_substitution_matrix
 #'
-#' @description Calculates position-specific substitution across cross-reactive candidates
+#' @description Calculates position-specific substitution across cross-reactive candidates.
 #'
 #' @param object Depends on xrResult object. Run \code{\link{cross_compose}} function.
 #' @param rank A numeric value to filter number of candidates
 #' @param pvalue_threshold P-value threshold
 #'
-#' @return Returns a \code{matrix} with amino acid substitution probabilies
+#' @return Returns a \code{matrix} with amino acid substitution probabilies.
 #'
 #' @importFrom universalmotif create_motif view_motifs
 #' @importFrom Biostrings AAStringSet
@@ -196,7 +198,7 @@ setMethod('cross_substitution_matrix', signature(object = "xrResult"),
 #' @name cross_browser
 #' @title Launching Crossdome web application
 #'
-#' @description Opens an interactive shiny application
+#' @description Opens an interactive shiny application.
 #'
 #'
 #' @importFrom DT dataTableOutput
@@ -239,7 +241,7 @@ setMethod('show', signature(object = 'xrResult'),
 
 #' @name cross_write
 #'
-#' @description Export Crossdome object to a tsv file
+#' @description Export Crossdome object to a tsv file.
 #'
 #' @param object Depends on xrResult object. Run \code{\link{cross_compose}} function.
 #' @param file File or connection to write to.

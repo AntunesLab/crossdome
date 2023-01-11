@@ -1,7 +1,7 @@
 #' @name cross_pairwise_plot
 #' @title Correlation plot
 #'
-#' @description Plot a Correlation plot based on two biochemical profiles
+#' @description Correlation plot based on two peptide / biochemical profiles.
 #'
 #' @param query Peptide target. Only 9-mers are supported.
 #' @param subject Putative off-target candidate. Only 9-mers are supported.
@@ -40,7 +40,7 @@ cross_pairwise_plot <- function(query, subject) {
 
 #' @name cross_expression_plot
 #'
-#' @description Plot a heatmap presenting the gene donor expression profile
+#' @description A heatmap presenting the gene donor expression profile.
 #'
 #' @param object Depends on xrResult object. Run \code{\link{cross_compose}} function.
 #'
@@ -102,7 +102,7 @@ setMethod('cross_expression_plot', signature(object = "xrResult"),
 
 #' @name cross_substitution_plot
 #'
-#' @description Plot a heatmap combined with seqlogo displaying amino acid substitutions
+#' @description A heatmap combined with seqlogo displaying amino acid substitutions.
 #'
 #' @param object Depends on xrResult object. Run \code{\link{cross_compose}} function.
 #'
@@ -182,9 +182,9 @@ setMethod('cross_substitution_plot', signature(object = "xrResult"),
           }
 )
 
-#' @name cross_enrichment_plot
+#' @name cross_tissues_plot
 #'
-#' @description Plot a bar plot summarizing the tissue-specificy groups
+#' @description A bar plot summarizing the tissue-specificy groups.
 #'
 #' @param object Depends on xrResult object. Run \code{\link{cross_compose}} function.
 #'
@@ -198,10 +198,10 @@ setMethod('cross_substitution_plot', signature(object = "xrResult"),
 #'
 #' @examples
 #' \dontrun{
-#'  cross_enrichment_plot(object = result)
+#'  cross_tissues_plot(object = result)
 #' }
 
-setMethod('cross_enrichment_plot', signature(object = "xrResult"),
+setMethod('cross_tissues_plot', signature(object = "xrResult"),
           function(object) {
             if(!'expression' %in% slotNames(object)) {
               quit(

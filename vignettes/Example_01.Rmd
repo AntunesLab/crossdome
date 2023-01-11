@@ -21,7 +21,7 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 library(crossdome)
 library(dplyr)
 
-database <- cross_universe(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
+database <- cross_background(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
 result <- cross_compose(query = 'EVDPIGHLY', background = database)
 
 ```
@@ -41,7 +41,11 @@ cross_expression_plot(object = result)
 
 ```{r}
 
-cross_enrichment_plot(object = result)
+if(FALSE) {
+  
+  cross_tissue_plot(object = result)
+  
+}
 ```
 
 ```{r fig.height = 10, fig.width = 6, paged.print = TRUE}
@@ -54,7 +58,10 @@ cross_substitution_plot(object = result)
 ```{r}
 
 if(FALSE) {
+  
       cross_write(result, file = "/tmp/crossdome_results.tsv")
+  
 }
 
 ```
+
