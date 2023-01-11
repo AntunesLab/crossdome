@@ -8,9 +8,18 @@
 [![R-CMD-check](https://github.com/oandrefonseca/crossdome/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/oandrefonseca/crossdome/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/oandrefonseca/crossdome/branch/main/graph/badge.svg)](https://app.codecov.io/gh/oandrefonseca/crossdome?branch=main)
-<!-- badges: end -->
+[![Open In
+Collab](https://colab.research.google.com/assets/colab-badge.svg)]()
+[![Generic
+badge](https://img.shields.io/badge/Version-Beta-Orange.svg)]()
 
-**Developed by:** [André Fonseca, PhD](oandrefonseca@gmail.com)
+<!-- badges: end -->
+<script src="https://kit.fontawesome.com/2b46ea512d.js" crossorigin="anonymous"></script>
+
+**Developed by:** André Fonseca, PhD \|
+<a href="mailto:oandrefonseca@gmail.com"><i class="fa-duotone fa-paper-plane"></i></a>
+\|
+<a href="https://www.linkedin.com/in/oandrefonseca/"><i class="fa-duotone fa-paper-plane"></i></a>
 
 <br> <br>
 
@@ -115,7 +124,7 @@ library(crossdome)
 
 database <- cross_background(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
 result <- cross_compose(query = 'EVDPIGHLY', background = database)
-#> ##------ Wed Jan 11 15:36:30 2023 ------##
+#> ##------ Wed Jan 11 16:17:32 2023 ------##
 ```
 
 <table>
@@ -951,5 +960,5 @@ str(result)
 #>   ..@ expression     : list()
 #>   ..@ analysis       : list()
 #>   ..@ position_weight: num [1:9] 1 1 1 1 1 1 1 1 1
-#>   ..@ timestamp      : chr "##------ Wed Jan 11 15:36:30 2023 ------##"
+#>   ..@ timestamp      : chr "##------ Wed Jan 11 16:17:32 2023 ------##"
 ```
