@@ -41,7 +41,7 @@ devtools::install_github("antuneslab/crossdome")
 
 ## Abstract
 
-**Crossdome: An R package to measure cross-reactivity risk on the sequence-space**
+**Crossdome: An interactive R package to predict cross-reactivity risk using immunopeptidomics databases**
 
 <p align="justify">  
 Currently, several clinical protocols are leveraging on distinct immune mechanisms, such as adoptive T-cell therapy and peptide-based vaccines. However, multiple factors can impact the accuracy of these immune-based applications, such as expression heterogeneity, immunogenicity, and cross-reactivity (CR) risk. Crossdome was created to measure cross-reactivity potential based on biochemical properties. Our approach aims to rank potential CR candidates and measure cross-reactivity risk using mRNA expression, immunogenicity score (TCR binding), and MHC presentation probability. Additionally, we provide the expression profile related to each CR candidate.
