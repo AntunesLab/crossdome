@@ -50,7 +50,7 @@ Currently, several clinical protocols are leveraging on distinct immune mechanis
 <a href=''><img src="man/figures/workflow.png" align="center"/></a>
 
 <p align="justify">  
-<b>Figure 1. Crossdome workflow and strategy.</b>Crossdome summarises biochemical properties per amino acid into 12 principal components. In turn, the principal components are used to convert peptide sequences into biochemical profiles (matrices). Next, given a target peptide, Crossdome screens an immunopeptidomics dataset for a similar biochemical profiler, i.e., CR candidates. A relatedness score between the target and candidate off-targets is calculated based on linear distance. Finally, Crossdome incorporates expression levels and immunogenicity predictions for each potential off-target.
+<b>Figure 1. Crossdome workflow and strategy.</b> Crossdome summarises biochemical properties per amino acid into 12 principal components. In turn, the principal components are used to convert peptide sequences into biochemical profiles (matrices). Next, given a target peptide, Crossdome screens an immunopeptidomics dataset for a similar biochemical profiler, i.e., CR candidates. A relatedness score between the target and candidate off-targets is calculated based on weighted linear distance. Finally, Crossdome incorporates expression levels and immunogenicity predictions for each potential off-target.
 </p>
 
 ## Functions and Features

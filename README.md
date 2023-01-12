@@ -48,15 +48,15 @@ profile related to each CR candidate.
 <a href=''><img src="man/figures/workflow.png" align="center"/></a>
 
 <p align="justify">
-<b>Figure 1. Crossdome workflow and strategy.</b>Crossdome summarises
+<b>Figure 1. Crossdome workflow and strategy.</b> Crossdome summarises
 biochemical properties per amino acid into 12 principal components. In
 turn, the principal components are used to convert peptide sequences
 into biochemical profiles (matrices). Next, given a target peptide,
 Crossdome screens an immunopeptidomics dataset for a similar biochemical
 profiler, i.e., CR candidates. A relatedness score between the target
-and candidate off-targets is calculated based on linear distance.
-Finally, Crossdome incorporates expression levels and immunogenicity
-predictions for each potential off-target.
+and candidate off-targets is calculated based on weighted linear
+distance. Finally, Crossdome incorporates expression levels and
+immunogenicity predictions for each potential off-target.
 </p>
 
 ## Functions and Features
@@ -121,7 +121,7 @@ library(crossdome)
 
 database <- cross_background(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
 result <- cross_compose(query = 'EVDPIGHLY', background = database)
-#> ##------ Wed Jan 11 18:35:08 2023 ------##
+#> ##------ Wed Jan 11 19:20:06 2023 ------##
 ```
 
 ``` r
@@ -962,5 +962,5 @@ str(result)
 #>   ..@ expression     : list()
 #>   ..@ analysis       : list()
 #>   ..@ position_weight: num [1:9] 1 1 1 1 1 1 1 1 1
-#>   ..@ timestamp      : chr "##------ Wed Jan 11 18:35:08 2023 ------##"
+#>   ..@ timestamp      : chr "##------ Wed Jan 11 19:20:06 2023 ------##"
 ```
