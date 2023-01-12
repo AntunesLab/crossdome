@@ -97,6 +97,13 @@ result <- cross_compose(query = 'EVDPIGHLY', background = database)
 
 ```
 
+```{r results = 'hide'}
+
+View(result@result)
+
+```
+
+
 ```{r message = FALSE, echo = FALSE}
 
 library(knitr)

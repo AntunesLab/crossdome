@@ -121,7 +121,12 @@ library(crossdome)
 
 database <- cross_background(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
 result <- cross_compose(query = 'EVDPIGHLY', background = database)
-#> ##------ Wed Jan 11 17:19:21 2023 ------##
+#> ##------ Wed Jan 11 18:35:08 2023 ------##
+```
+
+``` r
+
+View(result@result)
 ```
 
 <table>
@@ -957,5 +962,5 @@ str(result)
 #>   ..@ expression     : list()
 #>   ..@ analysis       : list()
 #>   ..@ position_weight: num [1:9] 1 1 1 1 1 1 1 1 1
-#>   ..@ timestamp      : chr "##------ Wed Jan 11 17:19:21 2023 ------##"
+#>   ..@ timestamp      : chr "##------ Wed Jan 11 18:35:08 2023 ------##"
 ```

@@ -95,7 +95,6 @@ setMethod('cross_expression_plot', signature(object = "xrResult"),
             )
 
             heatmap <- ComplexHeatmap::draw(p1 + p2)
-            return(heatmap)
 
           }
 )

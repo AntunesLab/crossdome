@@ -24,11 +24,13 @@ Predicts relatedness among peptides in a given database. Low values are associat
 }
 \examples{
 \dontrun{
+
+query <- 'EVDPIGHLY'
 data('mage_off_targets')
 
 mage_off_targets <- mage_off_targets$peptide_sequence
 background <- cross_background(off_targets = mage_off_targets, allele = "HLA-A*01:01")
-result <- cross_compose(query = query, background = background
+result <- cross_compose(query = query, background = background)
 
 }
 }
