@@ -94,6 +94,12 @@ immunogenicity predictions for each potential off-target.
 - **`cross_substitution_plot`** A heatmap combined with seqlogo
   displaying amino acid substitutions.
 
+## Documentation
+
+Examples of each function, including code, are available in the package
+documentation. Please use: `?FUNCTION_NAME`. Additionally, two vignettes
+are available through the command `browseVignettes('crossdome')`.
+
 ## Included datasets
 
 - **`hla_database`** Immunopeptidomics spanning several MHC Class I
@@ -121,7 +127,7 @@ library(crossdome)
 
 database <- cross_background(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
 result <- cross_compose(query = 'EVDPIGHLY', background = database)
-#> ##------ Mon Mar 27 09:50:18 2023 ------##
+#> ##------ Mon Mar 27 12:10:59 2023 ------##
 ```
 
 ``` r
@@ -962,5 +968,5 @@ str(result)
 #>   ..@ expression     : list()
 #>   ..@ analysis       : list()
 #>   ..@ position_weight: num [1:9] 1 1 1 1 1 1 1 1 1
-#>   ..@ timestamp      : chr "##------ Mon Mar 27 09:50:18 2023 ------##"
+#>   ..@ timestamp      : chr "##------ Mon Mar 27 12:10:59 2023 ------##"
 ```

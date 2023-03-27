@@ -80,6 +80,10 @@ Currently, several clinical protocols are leveraging on distinct immune mechanis
 - **`cross_pairwise_plot`**  Correlation plot based on two peptide / biochemical profiles **[UNDER CONSTRUCTION]**.
 - **`cross_substitution_plot`**  A heatmap combined with seqlogo displaying amino acid substitutions.
 
+## Documentation
+
+Examples of each function, including code, are available in the package documentation. Please use: `?FUNCTION_NAME`. Additionally, two vignettes are available through the command `browseVignettes('crossdome')`.
+
 ## Included datasets
 
 - **`hla_database`** Immunopeptidomics spanning several MHC Class I alleles. Includes binding affinity, and immunogenicity score from [MHC Flurry](https://www.sciencedirect.com/science/article/pii/S2405471220302398) and [DeepImmuno](https://academic.oup.com/bib/article/22/6/bbab160/6261914), respectively.
