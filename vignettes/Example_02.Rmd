@@ -31,7 +31,7 @@ mage_off_targets
 
 ## Performing Crossdome + A3A-derived contacts screening
 
-```{r screening}
+```{r screening_crystal}
 
 magea_a3a <- c(3.0, 0.5, 0.5, 4.0, 2.0, 0.5, 1.0, 1.0, 0.5)
 
@@ -40,17 +40,20 @@ result_cm_a3a <- cross_compose(query = 'EVDPIGHLY', background = database, posit
 
 ```
 
-### Displaying peptide composition across best-score candidates
+The position weight parameters were derived from TCR-peptides interactions based on [getcontacts]([https://getcontacts.github.io/)](https://getcontacts.github.io/)) analysis. For further details, please refer to the Material and Methods in your publication.
 
-```{r substitution, fig.height = 12, fig.width = 6.5, paged.print = TRUE}
+### Displaying peptides composition across best-score candidates
+
+```{r subs_crystal, fig.height = 12, fig.width = 6.5, paged.print = TRUE}
 
 result_cm_a3a <- cross_substitution_matrix(result_cm_a3a)
 cross_substitution_plot(object = result_cm_a3a)
 
 ```
+
 ## Performing Crossdome + Manually curated contacts screening
 
-```{r screening}
+```{r screening_curated}
 
 magea_manual_curated <- c(3.0, 0.5, 2.0, 4.0, 2.0, 0.5, 1.0, 1.0, 2.0)
 
@@ -59,12 +62,11 @@ result_manual_curated <- cross_compose(query = 'EVDPIGHLY', background = databas
 
 ```
 
-### Displaying peptide composition across best-score candidates
+### Displaying peptides composition across best-score candidates
 
-```{r substitution, fig.height = 12, fig.width = 6.5, paged.print = TRUE}
+```{r subs_curated, fig.height = 12, fig.width = 6.5, paged.print = TRUE}
 
 result_manual_curated <- cross_substitution_matrix(result_manual_curated)
 cross_substitution_plot(object = result_manual_curated)
 
 ```
-

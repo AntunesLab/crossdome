@@ -42,7 +42,7 @@ str(result)
 
 ```
 
-## Generating mRNA expression heatmap 
+## Generating mRNA expression heatmap
 
 ```{r expression, fig.height = 10, fig.width = 10, paged.print = TRUE}
 
@@ -51,9 +51,9 @@ cross_expression_plot(object = result)
 
 ```
 
-The heatmaps consider the peptide-donors expression across healthy tissues from **Human Protein Atlas**. Crossdome provides the HPA data through the function `data("hpa_database")`. Additionally, the peptide-donor mapping can be inspected on the `result@expression` slot. 
+The heatmaps consider the peptide-donors expression across healthy tissues from **Human Protein Atlas**. Crossdome provides the HPA data through the function `data("hpa_database")`. Additionally, the peptide-donor mapping can be inspected on the `result@expression` slot.
 
-## Summarising tissue specificity across candidates
+## Summarizing tissue specificity across candidates
 
 ```{r tissue_spec, fig.height = 4, fig.width = 6.5}
 
@@ -62,7 +62,7 @@ cross_tissues_plot(object = result)
 
 ```
 
-## Displaying peptide composition across best-score candidates
+## Displaying peptides composition across best-score candidates
 
 ```{r substitution, fig.height = 12, fig.width = 6.5, paged.print = TRUE}
 
