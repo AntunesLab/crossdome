@@ -35,7 +35,7 @@ options(tibble.print_min = 5, tibble.print_max = 5)
 
 ```{r, eval = FALSE}
 
-devtools::install_github("antuneslab/crossdome")
+devtools::install_github("antuneslab/crossdome", build_vignettes = TRUE)
 
 ```
 

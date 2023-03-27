@@ -1,8 +1,8 @@
 ---
-title: "Example 02"
+title: "Contact_Map_Usage"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Benchmarking with yeast-displayed peptides}
+  %\VignetteIndexEntry{Contact_Map_Usage}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,27 +16,55 @@ knitr::opts_chunk$set(
 options(rmarkdown.html_vignette.check_title = FALSE)
 ```
 
-```{r load_environment, warning = FALSE}
+# Crossdome - Contact map-aided predictions
+
+```{r loading, warning = FALSE}
 
 library(crossdome)
+library(patchwork)
 library(dplyr)
 
 data('mage_off_targets')
-mage_off_targets <- mage_off_targets$peptide_sequence
+mage_off_targets
 
 ```
 
-```{r}
+## Performing Crossdome + A3A-derived contacts screening
 
-database <- cross_background(off_targets = mage_off_targets, allele = "HLA-A*01:01")
-result <- cross_compose(query = 'EVDPIGHLY', background = database)
+```{r screening}
+
+magea_a3a <- c(3.0, 0.5, 0.5, 4.0, 2.0, 0.5, 1.0, 1.0, 0.5)
+
+database <- cross_background(off_targets = mage_off_targets$peptide_sequence, allele = "HLA-A*01:01")
+result_cm_a3a <- cross_compose(query = 'EVDPIGHLY', background = database, position_weight = magea_a3a)
+
+```
+
+### Displaying peptide composition across best-score candidates
+
+```{r substitution, fig.height = 12, fig.width = 6.5, paged.print = TRUE}
+
+result_cm_a3a <- cross_substitution_matrix(result_cm_a3a)
+cross_substitution_plot(object = result_cm_a3a)
+
+```
+## Performing Crossdome + Manually curated contacts screening
+
+```{r screening}
+
+magea_manual_curated <- c(3.0, 0.5, 2.0, 4.0, 2.0, 0.5, 1.0, 1.0, 2.0)
+
+database <- cross_background(off_targets = mage_off_targets$peptide_sequence, allele = "HLA-A*01:01")
+result_manual_curated <- cross_compose(query = 'EVDPIGHLY', background = database, position_weight = magea_manual_curated)
 
 ```
 
-```{r}
+### Displaying peptide composition across best-score candidates
 
-result <- cross_substitution_matrix(result)
-cross_substitution_plot(object = result)
+```{r substitution, fig.height = 12, fig.width = 6.5, paged.print = TRUE}
 
+result_manual_curated <- cross_substitution_matrix(result_manual_curated)
+cross_substitution_plot(object = result_manual_curated)
 
 ```
+

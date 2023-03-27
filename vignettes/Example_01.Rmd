@@ -1,8 +1,8 @@
 ---
-title: "Example_01"
+title: "Basic_Usage"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Example_01}
+  %\VignetteIndexEntry{Basic_Usage}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -23,7 +23,11 @@ knitr::opts_chunk$set(
 options(rmarkdown.html_vignette.check_title = FALSE)
 ```
 
-```{r, warning = FALSE}
+# Crossdome - Biochemical properties predictions
+
+## Performing Crossdome screening
+
+```{r loading, warning = FALSE}
 
 library(crossdome)
 
@@ -32,27 +36,35 @@ result <- cross_compose(query = 'EVDPIGHLY', background = database)
 
 ```
 
-```{r}
+```{r structure}
 
 str(result)
 
 ```
 
-```{r fig.height = 10, fig.width = 10, paged.print = TRUE}
+## Generating mRNA expression heatmap 
+
+```{r expression, fig.height = 10, fig.width = 10, paged.print = TRUE}
 
 result <- cross_expression_matrix(result, pvalue_threshold = 0.005)
 cross_expression_plot(object = result)
 
 ```
 
-```{r fig.height = 4, fig.width = 6.5}
+The heatmaps consider the peptide-donors expression across healthy tissues from **Human Protein Atlas**. Crossdome provides the HPA data through the function `data("hpa_database")`. Additionally, the peptide-donor mapping can be inspected on the `result@expression` slot. 
+
+## Summarising tissue specificity across candidates
+
+```{r tissue_spec, fig.height = 4, fig.width = 6.5}
 
 cross_tissues_plot(object = result)
 
 
 ```
 
-```{r fig.height = 12, fig.width = 6.5, paged.print = TRUE}
+## Displaying peptide composition across best-score candidates
+
+```{r substitution, fig.height = 12, fig.width = 6.5, paged.print = TRUE}
 
 result <- cross_substitution_matrix(result)
 cross_substitution_plot(object = result)
