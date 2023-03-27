@@ -20,11 +20,14 @@ options(tibble.print_min = 5, tibble.print_max = 5)
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/oandrefonseca/crossdome/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/oandrefonseca/crossdome/actions/workflows/R-CMD-check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/oandrefonseca/crossdome/branch/main/graph/badge.svg)](https://app.codecov.io/gh/oandrefonseca/crossdome?branch=main)
-[![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)]()
 [![Generic badge](https://img.shields.io/badge/Version-Beta-Orange.svg)]()
 
 <!-- badges: end -->
+
+<!--
+[![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)]()
+[![Codecov test coverage](https://codecov.io/gh/oandrefonseca/crossdome/branch/main/graph/badge.svg)](https://app.codecov.io/gh/oandrefonseca/crossdome?branch=main)
+-->
 
 **Developed by:** André Fonseca, PhD <a href='mailto:oandrefonseca@gmail.com'><img src="man/figures/gmail.png" height="15px"/></a>
 
