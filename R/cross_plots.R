@@ -223,7 +223,7 @@ setMethod('cross_tissues_plot', signature(object = "xrResult"),
 
 #' @name cross_prediction_plot
 #'
-#' @description Plot a dot plot showing the immunogenic predictions
+#' @description A dot plot showing the immunogenic predictions
 #'
 #' @param object Depends on xrResult object. Run \code{\link{cross_compose}} function.
 #'

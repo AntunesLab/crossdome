@@ -32,3 +32,11 @@ database <- cross_background(off_targets = mage_off_targets, allele = "HLA-A*01:
 result <- cross_compose(query = 'EVDPIGHLY', background = database)
 
 ```
+
+```{r}
+
+result <- cross_substitution_matrix(result)
+cross_substitution_plot(object = result)
+
+
+```

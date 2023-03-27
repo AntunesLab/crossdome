@@ -1,11 +1,18 @@
 ---
-title: "Example 01"
+title: "Example_01"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Predicting cross-reactivity targets}
+  %\VignetteIndexEntry{Example_01}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
 ```{r, include = FALSE}
 

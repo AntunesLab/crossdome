@@ -15,7 +15,7 @@ cross_prediction_plot(object)
 Returns a ggplot object
 }
 \description{
-Plot a dot plot showing the immunogenic predictions
+A dot plot showing the immunogenic predictions
 }
 \examples{
 \dontrun{
