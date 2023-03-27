@@ -6,14 +6,14 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/oandrefonseca/crossdome/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/oandrefonseca/crossdome/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/oandrefonseca/crossdome/branch/main/graph/badge.svg)](https://app.codecov.io/gh/oandrefonseca/crossdome?branch=main)
-[![Open In
-Collab](https://colab.research.google.com/assets/colab-badge.svg)]()
 [![Generic
 badge](https://img.shields.io/badge/Version-Beta-Orange.svg)]()
 
 <!-- badges: end -->
+<!--
+[![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)]()
+[![Codecov test coverage](https://codecov.io/gh/oandrefonseca/crossdome/branch/main/graph/badge.svg)](https://app.codecov.io/gh/oandrefonseca/crossdome?branch=main)
+-->
 
 **Developed by:** André Fonseca, PhD
 <a href='mailto:oandrefonseca@gmail.com'><img src="man/figures/gmail.png" height="15px"/></a>
@@ -24,13 +24,13 @@ badge](https://img.shields.io/badge/Version-Beta-Orange.svg)]()
 
 ``` r
 
-devtools::install_github("antuneslab/crossdome")
+devtools::install_github("antuneslab/crossdome", build_vignettes = TRUE)
 ```
 
 ## Abstract
 
-**Crossdome: An R package to measure cross-reactivity risk on the
-sequence-space**
+**Crossdome: An interactive R package to predict cross-reactivity risk
+using immunopeptidomics databases**
 
 <p align="justify">
 Currently, several clinical protocols are leveraging on distinct immune
@@ -121,7 +121,7 @@ library(crossdome)
 
 database <- cross_background(off_targets = 'ESDPIVAQY', allele = "HLA-A*01:01")
 result <- cross_compose(query = 'EVDPIGHLY', background = database)
-#> ##------ Wed Jan 11 19:20:06 2023 ------##
+#> ##------ Mon Mar 27 09:50:18 2023 ------##
 ```
 
 ``` r
@@ -962,5 +962,5 @@ str(result)
 #>   ..@ expression     : list()
 #>   ..@ analysis       : list()
 #>   ..@ position_weight: num [1:9] 1 1 1 1 1 1 1 1 1
-#>   ..@ timestamp      : chr "##------ Wed Jan 11 19:20:06 2023 ------##"
+#>   ..@ timestamp      : chr "##------ Mon Mar 27 09:50:18 2023 ------##"
 ```
