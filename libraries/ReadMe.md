@@ -1,5 +1,7 @@
 This zip file contains all libraries required to CrossDome to work properly.
 
+To download the libraries: [Download](https://www.dropbox.com/scl/fi/yxghqpynw0bo8gouic694/library_1.zip?rlkey=7mafkhdhkn86kf9lovkt7gi06&st=7tmgmnzv&dl=0)
+
 To install the libraries:
 
 Click Tools → Install Packages.
